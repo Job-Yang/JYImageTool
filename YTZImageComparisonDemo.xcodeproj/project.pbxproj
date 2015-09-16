@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B15EEC411BA96CC60042B66D /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B15EEC401BA96CC60042B66D /* TableViewController.m */; };
 		B198429F1BA8FA40006C5FED /* getColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B198429E1BA8FA40006C5FED /* getColorViewController.m */; };
 		B19842A21BA8FFEE006C5FED /* ComparisonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19842A11BA8FFEE006C5FED /* ComparisonViewController.m */; };
-		B19842A51BA90C8C006C5FED /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19842A41BA90C8C006C5FED /* TableViewController.m */; };
 		B1B6682F1BA8409E00F20BD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B6682E1BA8409E00F20BD2 /* main.m */; };
 		B1B668321BA8409E00F20BD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B668311BA8409E00F20BD2 /* AppDelegate.m */; };
 		B1B668351BA8409E00F20BD2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B668341BA8409E00F20BD2 /* ViewController.m */; };
@@ -39,12 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B15EEC3F1BA96CC60042B66D /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		B15EEC401BA96CC60042B66D /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		B198429D1BA8FA40006C5FED /* getColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getColorViewController.h; sourceTree = "<group>"; };
 		B198429E1BA8FA40006C5FED /* getColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getColorViewController.m; sourceTree = "<group>"; };
 		B19842A01BA8FFEE006C5FED /* ComparisonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComparisonViewController.h; sourceTree = "<group>"; };
 		B19842A11BA8FFEE006C5FED /* ComparisonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComparisonViewController.m; sourceTree = "<group>"; };
-		B19842A31BA90C8C006C5FED /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewController.h; path = ../TableViewController.h; sourceTree = "<group>"; };
-		B19842A41BA90C8C006C5FED /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewController.m; path = ../TableViewController.m; sourceTree = "<group>"; };
 		B1B668291BA8409E00F20BD2 /* YTZImageComparisonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YTZImageComparisonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B6682D1BA8409E00F20BD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1B6682E1BA8409E00F20BD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -113,8 +113,8 @@
 			children = (
 				B1B668301BA8409E00F20BD2 /* AppDelegate.h */,
 				B1B668311BA8409E00F20BD2 /* AppDelegate.m */,
-				B19842A31BA90C8C006C5FED /* TableViewController.h */,
-				B19842A41BA90C8C006C5FED /* TableViewController.m */,
+				B15EEC3F1BA96CC60042B66D /* TableViewController.h */,
+				B15EEC401BA96CC60042B66D /* TableViewController.m */,
 				B1B668331BA8409E00F20BD2 /* ViewController.h */,
 				B1B668341BA8409E00F20BD2 /* ViewController.m */,
 				B198429D1BA8FA40006C5FED /* getColorViewController.h */,
@@ -288,7 +288,7 @@
 				B19842A21BA8FFEE006C5FED /* ComparisonViewController.m in Sources */,
 				B1B6682F1BA8409E00F20BD2 /* main.m in Sources */,
 				B198429F1BA8FA40006C5FED /* getColorViewController.m in Sources */,
-				B19842A51BA90C8C006C5FED /* TableViewController.m in Sources */,
+				B15EEC411BA96CC60042B66D /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
