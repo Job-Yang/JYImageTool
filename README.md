@@ -8,6 +8,7 @@
 ### 前言
   第一次在GitHub看到[pixelogik](https://github.com/pixelogik)与[luisespinoza](https://github.com/luisespinoza)取主色的项目[ColorCube](https://github.com/pixelogik/ColorCube),[LEColorPicker](https://github.com/luisespinoza/LEColorPicker)时，就有一个想法，能不能通过这个取色算法做一些更加实际的事情呢？于是有了接下来的这个项目。
 
+
 #### 1.提取图片主色的算法实现
   1>将传入的图片重绘为小尺寸的图片，避免遍历所有像素点所带来的性能问题;<br>
   2>先得到重绘后图片的ARGB分量值；<br>
@@ -17,19 +18,22 @@
   6>计算鲜艳色出现的频率，按照频率高低加入到返回值数组。<br>
   其中可根据多个枚举值来定制"鲜艳"的标准，也可以设置忽略一个RGB色彩空间的颜色，避免一些颜色的干扰。<br>
   具体可以查看[ColorCube](https://github.com/pixelogik/ColorCube)。<br>
-  
+ 
+ 
 #### 2.提取图片对应点(像素)颜色的算法实现
   1>将传入的图片重绘为小尺寸的图片;<br>
   2>先得到重绘后图片的ARGB分量值；<br>
   3>由参数Rect算出该像素ARGB信息在字符数组中的位置；<br>
   4>返回一个该ARGB分量组合成的UIColor。<br>
-  
+ 
+ 
 #### 3.图片相同的算法实现
   1>将传入两张的图片重绘为相同的小尺寸的图片;<br>
   2>先得到重绘后图片的ARGB分量值；<br>
   3>计算对应像素在颜色空间上的距离，小于相等色差阀值则匹配度加一;<br>
   4>匹配度高于最低相等阀值则视为图片相同。<br>
   对于相同图片的算法主要是基于对像素的色差对比，这样的对比的结果是稳定的。
+
 
 #### 4.图片相似的算法实现
   1>将传入两张的图片重绘为相同的小尺寸的图片;<br>
