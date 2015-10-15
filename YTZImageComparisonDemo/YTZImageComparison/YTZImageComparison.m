@@ -181,7 +181,7 @@ int neighbourIndices[27][3] = {
 }
 
 
-//通过按照不同方式取出相应优势色，如果每个优势色都匹配，即为相似图片
+//通过不同方式取出相应优势色，如果每个优势色都匹配，即为相似图片
 
 //两张图片是否相似
 - (BOOL)isSimilarToImage:(UIImage *)imageOne andImageTwo:(UIImage *)imageTwo {
