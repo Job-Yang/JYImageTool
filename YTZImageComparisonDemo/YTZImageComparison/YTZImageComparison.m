@@ -141,11 +141,17 @@ int neighbourIndices[27][3] = {
     CGContextDrawImage(cgctxOne, Rect, ImageOneRef);
     unsigned char* dataOne = CGBitmapContextGetData (cgctxOne);
     
+    //释放cgctxOne
+    CGContextRelease(cgctxOne);
+    
     //获得第二张图片的ARGB信息
     CGImageRef ImageTwoRef = imageTwo.CGImage;
     CGContextRef cgctxTwo = [self createARGBBitmapContextFromImage:ImageTwoRef inIamgeRect:Rect];
     CGContextDrawImage(cgctxTwo, Rect, ImageTwoRef);
     unsigned char* dataTwo = CGBitmapContextGetData (cgctxTwo);
+    
+    //释放cgctxTwo
+    CGContextRelease(cgctxTwo);
     
     //相等像素数
     int EqualCount = 0;
@@ -169,6 +175,11 @@ int neighbourIndices[27][3] = {
             EqualCount ++;
         }
     }
+    
+    //释放dataOne与dataTwo
+    free(dataOne);
+    free(dataTwo);
+    
     NSLog(@"匹配度：%d/%d",EqualCount,COLOR_CUBE_RESOLUTION * COLOR_CUBE_RESOLUTION);
     
     //大于相等条件即为相等
