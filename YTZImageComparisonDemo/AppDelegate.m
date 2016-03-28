@@ -7,16 +7,71 @@
 //
 
 #import "AppDelegate.h"
+#import "YTZRootViewController.h"
 
-@interface AppDelegate ()
+@interface YTZNavBar : UINavigationBar
+@end
+
+@implementation YTZNavBar {
+    CGSize _previousSize;
+}
+
+- (CGSize)sizeThatFits:(CGSize)size {
+    size = [super sizeThatFits:size];
+    if ([UIApplication sharedApplication].statusBarHidden) {
+        size.height = 64;
+    }
+    return size;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (!CGSizeEqualToSize(self.bounds.size, _previousSize)) {
+        _previousSize = self.bounds.size;
+        [self.layer removeAllAnimations];
+        [self.layer.sublayers enumerateObjectsUsingBlock:^(CALayer *layer, NSUInteger idx, BOOL *stop) {
+            [layer removeAllAnimations];
+        }];
+    }
+}
 
 @end
 
+@interface YTZNavController : UINavigationController
+@end
+@implementation YTZNavController
+
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
+}
+
+@end
+
+
+@interface AppDelegate ()
+@end
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    YTZRootViewController *root = [YTZRootViewController new];
+    YTZNavController *nav = [[YTZNavController alloc] initWithNavigationBarClass:[YTZNavBar class] toolbarClass:[UIToolbar class]];
+    if ([nav respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
+        nav.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    [nav pushViewController:root animated:NO];
+    
+    self.rootViewController = nav;
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.rootViewController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

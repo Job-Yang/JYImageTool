@@ -1,43 +1,18 @@
 //
-//  YTZImageComparison.m
-//  ColorCubeDemo
+//  YTZMainColour.m
+//  YTZImageComparison
 //
 //  Created by 杨权 on 15/9/15.
 //  Copyright (c) 2015年 Job-Yang. All rights reserved.
 //
 
-#import "YTZImageComparison.h"
-
-//每种颜色维度像元分辨率
-#define COLOR_CUBE_RESOLUTION 20
-
-//判断相同条件
-#define EQUAL_HRESHOLD 0.99
-
-//判断相似条件
-#define SIMILAR_HRESHOLD 0.7
-
-//两个图片的比较次数
-#define IMAGE_COMPARISON_COUNT 4
-
-//过滤鲜艳的颜色阈值
-#define BRIGHT_COLOR_THRESHOLD 0.6
-
-//过滤暗淡的颜色阈值
-#define DARK_COLOR_THRESHOLD 0.4
-
-//不同的颜色阈值(颜色空间距离)
-#define DISTINCT_COLOR_THRESHOLD 0.2
-
-//辅助宏计算线性cell下标
-#define CELL_INDEX(r,g,b) (r+g*COLOR_CUBE_RESOLUTION+b*COLOR_CUBE_RESOLUTION*COLOR_CUBE_RESOLUTION)
-
-//辅助宏计算cell总数
-#define CELL_COUNT COLOR_CUBE_RESOLUTION*COLOR_CUBE_RESOLUTION*COLOR_CUBE_RESOLUTION
+#import "YTZMainColour.h"
+#import "YTZMacro.h"
+#import "YTZLocalMaximum.h"
 
 
 /*
- 对代码中一些参数的解释
+ 对代码中一些参数的注解
  1.cell:三维空间（RGB）中的一个单位立方体；
  2.neighbourIndices:三维空间中，一个立方体cell周围邻近的立方体方向，联想魔方，一共27块（包扩中心）；
  3.BrightColors/Bright:鲜艳的颜色，突出的颜色；
@@ -84,7 +59,7 @@ int neighbourIndices[27][3] = {
     {-1,-1,-1}
 };
 
-@interface YTZImageComparison () {
+@interface YTZMainColour () {
     CubeCell cells[COLOR_CUBE_RESOLUTION*COLOR_CUBE_RESOLUTION*COLOR_CUBE_RESOLUTION];
 }
 
@@ -125,177 +100,19 @@ int neighbourIndices[27][3] = {
 @end
 
 
+@implementation YTZMainColour
 
-
-@implementation YTZImageComparison
-
-
-//对比两张图片是否相等
-- (BOOL)isEqualToImage:(UIImage *)imageOne andImageTwo:(UIImage *)imageTwo {
-    //图片压缩尺寸
-    CGRect Rect = CGRectMake(0, 0, COLOR_CUBE_RESOLUTION, COLOR_CUBE_RESOLUTION);
+//获取单例对象
++ (instancetype)sharedMainColour {
+    static YTZMainColour *_sharedMainColour = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedMainColour = [[YTZMainColour alloc]init];
+    });
     
-    //获得第一张图片的ARGB信息
-    CGImageRef ImageOneRef = imageOne.CGImage;
-    CGContextRef cgctxOne = [self createARGBBitmapContextFromImage:ImageOneRef inIamgeRect:Rect];
-    CGContextDrawImage(cgctxOne, Rect, ImageOneRef);
-    unsigned char* dataOne = CGBitmapContextGetData (cgctxOne);
-    
-    //释放cgctxOne
-    CGContextRelease(cgctxOne);
-    
-    //获得第二张图片的ARGB信息
-    CGImageRef ImageTwoRef = imageTwo.CGImage;
-    CGContextRef cgctxTwo = [self createARGBBitmapContextFromImage:ImageTwoRef inIamgeRect:Rect];
-    CGContextDrawImage(cgctxTwo, Rect, ImageTwoRef);
-    unsigned char* dataTwo = CGBitmapContextGetData (cgctxTwo);
-    
-    //释放cgctxTwo
-    CGContextRelease(cgctxTwo);
-    
-    //相等像素数
-    int EqualCount = 0;
-    
-    //遍历重绘尺寸的每个像素点
-    for (int i = 0; i < COLOR_CUBE_RESOLUTION*COLOR_CUBE_RESOLUTION; i++) {
-        
-        float redOne = dataOne[4*i+1]/255.0;
-        float greenOne = dataOne[4*i+2]/255.0;
-        float blueOne = dataOne[4*i+3]/255.0;
-        
-        float redTwo = dataTwo[4*i+1]/255.0;
-        float greenTwo = dataTwo[4*i+2]/255.0;
-        float blueTwo = dataTwo[4*i+3]/255.0;
-        
-        //颜色空间距离，距离表示色差大小
-        float difference = pow( pow((redOne - redTwo), 2) + pow((greenOne - greenTwo), 2) + pow((blueOne - blueTwo), 2), 0.5 );
-        
-        //色差小于阀值
-        if (difference < DISTINCT_COLOR_THRESHOLD) {
-            EqualCount ++;
-        }
-    }
-    
-    //释放dataOne与dataTwo
-    free(dataOne);
-    free(dataTwo);
-    
-    NSLog(@"匹配度：%d/%d",EqualCount,COLOR_CUBE_RESOLUTION * COLOR_CUBE_RESOLUTION);
-    
-    //大于相等条件即为相等
-    if (EqualCount > COLOR_CUBE_RESOLUTION * COLOR_CUBE_RESOLUTION * EQUAL_HRESHOLD) {
-        return YES;
-    }
-    else{
-        return NO;
-    }
+    return _sharedMainColour;
 }
 
-
-//通过不同方式取出相应优势色，如果每个优势色都匹配，即为相似图片
-
-//两张图片是否相似
-- (BOOL)isSimilarToImage:(UIImage *)imageOne andImageTwo:(UIImage *)imageTwo {
-    
-    //相似值
-    int Similarity = 0;
-    
-    //分别取出两张图片的主色调数组
-    //返回一个颜色数组，数组按枚举Flags条件进行符合度排序
-    //avoidColor参数可以忽略一个RGB空间的色彩，使它不参与主色的提取
-    //count参数按照要求取多少个优势色
-    NSArray *imageOneArr = [self extractBrightColorsFromImage:imageOne avoidColor:nil count:IMAGE_COMPARISON_COUNT];
-    NSArray *imageTwoArr = [self extractBrightColorsFromImage:imageTwo avoidColor:nil count:IMAGE_COMPARISON_COUNT];
-    
-    int LoopCount = (int)MIN(imageOneArr.count, imageTwoArr.count);
-    
-    for (int i = 0; i < LoopCount; i++ ) {
-        
-        //取得颜色的RGB分量
-        UIColor *imageOneColor = imageOneArr[i];
-        const CGFloat* componentsOne = CGColorGetComponents(imageOneColor.CGColor);
-        CGFloat RedOne, GreenOne, BlueOne;
-        RedOne = componentsOne[0];
-        GreenOne = componentsOne[1];
-        BlueOne = componentsOne[2];
-        
-        //取得颜色的RGB分量
-        UIColor *imageTwoColor = imageTwoArr[i];
-        const CGFloat* componentsTwo = CGColorGetComponents(imageTwoColor.CGColor);
-        CGFloat RedTwo, GreenTwo, BlueTwo;
-        RedTwo = componentsTwo[0];
-        GreenTwo = componentsTwo[1];
-        BlueTwo = componentsTwo[2];
-        
-        ///颜色空间距离，距离表示色差大小
-        float difference = pow( pow((RedOne - RedTwo), 2) + pow((GreenOne - GreenTwo), 2) + pow((BlueOne - BlueTwo), 2), 0.5 );
-        NSLog(@"difference = %f",difference);
-        
-        //色差小于阀值表示优势色相似
-        if (difference < SIMILAR_HRESHOLD) {
-            Similarity ++;
-        }
-    }
-    NSLog(@"Similarity = %d",Similarity);
-    NSLog(@"----------------------------------");
-    
-    //每个优势色都相似视为图片相似
-    if (Similarity == LoopCount) {
-        return YES;
-    }
-    else{
-        return NO;
-    }
-
-}
-
-
-//获取图片点point处的像素颜色
-- (UIColor*)getPixelColorAtLocation:(CGPoint)point inImage:(UIImage *)image formImageRect:(CGRect)Rect {
-    
-    //获得图片上下文
-    UIColor* color = nil;
-    CGImageRef inImage = image.CGImage;
-    CGContextRef cgctx = [self createARGBBitmapContextFromImage:inImage inIamgeRect:Rect];
-    if (cgctx == NULL) { return nil;}
-    
-    //获取重绘图片大小
-    size_t w = Rect.size.width;
-    size_t h = Rect.size.height;
-    
-    CGRect rect = {{0,0},{w,h}};
-    
-    //重绘图片
-    CGContextDrawImage(cgctx, rect, inImage);
-    
-    //获得图片ARGB色彩分量
-    unsigned char* data = CGBitmapContextGetData (cgctx);
-    
-    if (data != NULL) {
-        //offset为偏移量，用于定位数组中的对应像素信息
-        int offset = 4*((w*round(point.y))+round(point.x));
-        int alpha =  data[offset];
-        int red = data[offset+1];
-        int green = data[offset+2];
-        int blue = data[offset+3];
-        NSLog(@"offset: %i colors: RGB A %i %i %i  %i",offset,red,green,
-              blue,alpha);
-        
-        NSLog(@"x:%f y:%f", point.x, point.y);
-        
-        //取得该色
-        color = [UIColor colorWithRed:(red/255.0f) green:(green/255.0f) blue:
-                 (blue/255.0f) alpha:(alpha/255.0f)];
-    }
-    
-    //释放上下文空间
-    CGContextRelease(cgctx);
-    
-    if (data) { free(data); }
-    
-    return color;
-    
-}
 
 //选取图片主色调
 - (NSArray *)extractBrightColorsFromImage:(UIImage *)image avoidColor:(UIColor*)avoidColor count:(NSUInteger)count {
@@ -318,7 +135,7 @@ int neighbourIndices[27][3] = {
 
 
 //创建图片上下文空间
-- (CGContextRef)createARGBBitmapContextFromImage:(CGImageRef)inImage inIamgeRect:(CGRect)rect {
+- (CGContextRef)createARGBBitmapContextFromImage:(CGImageRef)image imageRect:(CGRect)rect {
     
     CGContextRef    context = NULL;
     
@@ -326,13 +143,13 @@ int neighbourIndices[27][3] = {
     
     void *          bitmapData;
     
-    int             bitmapByteCount;
+    NSInteger       bitmapByteCount;
     
-    int             bitmapBytesPerRow;
+    NSInteger       bitmapBytesPerRow;
     
     //根据rect参数绘制
-    int pixelsWide = rect.size.width;
-    int pixelsHigh = rect.size.height;
+    NSInteger pixelsWide = rect.size.width;
+    NSInteger pixelsHigh = rect.size.height;
     
     bitmapBytesPerRow   = (pixelsWide * 4);
     bitmapByteCount     = (bitmapBytesPerRow * pixelsHigh);
@@ -410,16 +227,16 @@ int neighbourIndices[27][3] = {
     if (!rawData) return nil;
     
     //助手变量
-    double red, green, blue;
-    int redIndex, greenIndex, blueIndex, cellIndex, localHitCount;
+    CGFloat red, green, blue;
+    NSInteger redIndex, greenIndex, blueIndex, cellIndex, localHitCount;
     BOOL isLocalMaximum;
     
     //每一个cell的的RGB映射到三维网格上
     for (int k=0; k<pixelCount; k++) {
         //分量取值范围[0,1]
-        red   = (double)rawData[k*4+0]/255.0;
-        green = (double)rawData[k*4+1]/255.0;
-        blue  = (double)rawData[k*4+2]/255.0;
+        red   = (CGFloat)rawData[k*4+0]/255.0;
+        green = (CGFloat)rawData[k*4+1]/255.0;
+        blue  = (CGFloat)rawData[k*4+2]/255.0;
         
         //如果我们只希望保留鲜艳的色彩，则忽略暗淡的像素
         if (flags & OnlyBrightColors) {
@@ -430,9 +247,9 @@ int neighbourIndices[27][3] = {
         }
         
         //在每种颜色尺寸颜色组件映射到cell的下标
-        redIndex   = (int)(red*(COLOR_CUBE_RESOLUTION-1.0));
-        greenIndex = (int)(green*(COLOR_CUBE_RESOLUTION-1.0));
-        blueIndex  = (int)(blue*(COLOR_CUBE_RESOLUTION-1.0));
+        redIndex   = (NSInteger)(red*(COLOR_CUBE_RESOLUTION-1.0));
+        greenIndex = (NSInteger)(green*(COLOR_CUBE_RESOLUTION-1.0));
+        blueIndex  = (NSInteger)(blue*(COLOR_CUBE_RESOLUTION-1.0));
         
         //计算线性cell下标
         cellIndex = CELL_INDEX(redIndex, greenIndex, blueIndex);
@@ -491,9 +308,9 @@ int neighbourIndices[27][3] = {
                 YTZLocalMaximum *maximum = [[YTZLocalMaximum alloc] init];
                 maximum.cellIndex = CELL_INDEX(r, g, b);
                 maximum.hitCount = cells[maximum.cellIndex].hitCount;
-                maximum.red   = cells[maximum.cellIndex].redAcc / (double)cells[maximum.cellIndex].hitCount;
-                maximum.green = cells[maximum.cellIndex].greenAcc / (double)cells[maximum.cellIndex].hitCount;
-                maximum.blue  = cells[maximum.cellIndex].blueAcc / (double)cells[maximum.cellIndex].hitCount;
+                maximum.red   = cells[maximum.cellIndex].redAcc / (CGFloat)cells[maximum.cellIndex].hitCount;
+                maximum.green = cells[maximum.cellIndex].greenAcc / (CGFloat)cells[maximum.cellIndex].hitCount;
+                maximum.blue  = cells[maximum.cellIndex].blueAcc / (CGFloat)cells[maximum.cellIndex].hitCount;
                 maximum.brightness = fmax(fmax(maximum.red, maximum.green), maximum.blue);
                 [localMaxima addObject:maximum];
             }
@@ -575,9 +392,9 @@ int neighbourIndices[27][3] = {
             YTZLocalMaximum *max2 = maxima[n];
             
             //计算RGB差值
-            double redDelta   = max1.red - max2.red;
-            double greenDelta = max1.green - max2.green;
-            double blueDelta  = max1.blue - max2.blue;
+            CGFloat redDelta   = max1.red - max2.red;
+            CGFloat greenDelta = max1.green - max2.green;
+            CGFloat blueDelta  = max1.blue - max2.blue;
             
             //计算在色彩空间的距离增量
             double delta = sqrt(redDelta*redDelta + greenDelta*greenDelta + blueDelta*blueDelta);
@@ -610,9 +427,9 @@ int neighbourIndices[27][3] = {
         YTZLocalMaximum *max1 = maxima[k];
         
         //计算RGB差值
-        double redDelta   = max1.red - components[0];
-        double greenDelta = max1.green - components[1];
-        double blueDelta  = max1.blue - components[2];
+        CGFloat redDelta   = max1.red - components[0];
+        CGFloat greenDelta = max1.green - components[1];
+        CGFloat blueDelta  = max1.blue - components[2];
         
         //计算颜色空间距离的变化量
         double delta = sqrt(redDelta*redDelta + greenDelta*greenDelta + blueDelta*blueDelta);
@@ -645,7 +462,7 @@ int neighbourIndices[27][3] = {
     if (maxima.count > count) {
         
         NSArray *tempDistinctMaxima = maxima;
-        double distinctThreshold = 0.1;
+        CGFloat distinctThreshold = 0.1;
         
         //如果这不能导致想要的计数，阈值减少十次。
         for (int k=0; k<10; k++) {
@@ -745,12 +562,12 @@ int neighbourIndices[27][3] = {
     return [self colorsFromMaxima:sortedMaxima];
 }
 
-- (NSArray *)extractColorsFromImage:(UIImage *)image flags:(NSUInteger)flags count:(NSUInteger)count {
+- (NSArray *)extractColorsFromImage:(UIImage *)image flags:(NSUInteger)flags maxCount:(NSUInteger)maxCount {
     //获取最大值
     NSArray *sortedMaxima = [self extractAndFilterMaximaFromImage:image flags:flags];
     
     //智能过滤不同色
-    sortedMaxima = [self performAdaptiveDistinctFilteringForMaxima:sortedMaxima count:count];
+    sortedMaxima = [self performAdaptiveDistinctFilteringForMaxima:sortedMaxima count:maxCount];
     
     //返回颜色Array
     return [self colorsFromMaxima:sortedMaxima];
