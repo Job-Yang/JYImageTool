@@ -37,7 +37,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     _imageViewOne = [[UIImageView alloc]initWithFrame:CGRectMake(0 , 64, SCREEN_WIDTH, SCREEN_HEIGHT/2-50)];
-    NSLog(@"_imageViewOne = %@",NSStringFromCGRect(_imageViewOne.frame));
     [_imageViewOne setContentMode:UIViewContentModeScaleAspectFill];
     _imageViewOne.layer.masksToBounds = YES;
     [self.view addSubview:_imageViewOne];

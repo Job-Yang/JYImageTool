@@ -89,7 +89,7 @@ typedef struct CubeCell {
 
 /**
  *  获取image的主色
- *  UIColor必须为colorWithRed方法创建，UIColor的类方法创建的无法获取他的RGBA
+ *  avoidColor必须为colorWithRed方法创建，UIColor的类方法创建的无法获取它的RGBA
  *
  *  @param image 图片
  *  @param flags 取色方式
@@ -101,7 +101,7 @@ typedef struct CubeCell {
 
 /**
  *  获取image的主色
- *  UIColor必须为colorWithRed方法创建，UIColor的类方法创建的无法获取他的RGBA
+ *  avoidColor必须为colorWithRed方法创建，UIColor的类方法创建的无法获取它的RGBA
  *
  *  @param image      图片
  *  @param flags      取色方式
@@ -115,7 +115,7 @@ typedef struct CubeCell {
 
 /**
  *  获取image的主色
- *  UIColor必须为colorWithRed方法创建，UIColor的类方法创建的无法获取他的RGBA
+ *  avoidColor必须为colorWithRed方法创建，UIColor的类方法创建的无法获取它的RGBA
  *
  *  @param image      图片
  *  @param avoidColor 需要忽略的颜色

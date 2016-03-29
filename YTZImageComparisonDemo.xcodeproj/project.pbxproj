@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B12AB76B1CAA600C000C210B /* Bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B12AB76A1CAA600C000C210B /* Bg.png */; };
 		B16FF1AD1CA90E1100FC839B /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = B16FF1A21CA90E1100FC839B /* 1.png */; };
 		B16FF1AE1CA90E1100FC839B /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = B16FF1A31CA90E1100FC839B /* 2.png */; };
 		B16FF1AF1CA90E1100FC839B /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = B16FF1A41CA90E1100FC839B /* 4.png */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B12AB76A1CAA600C000C210B /* Bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bg.png; sourceTree = "<group>"; };
 		B16FF1A21CA90E1100FC839B /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		B16FF1A31CA90E1100FC839B /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		B16FF1A41CA90E1100FC839B /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		B177350D1CA52DA100B5AD11 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B12AB76A1CAA600C000C210B /* Bg.png */,
 				B16FF1A21CA90E1100FC839B /* 1.png */,
 				B16FF1A31CA90E1100FC839B /* 2.png */,
 				B16FF1AB1CA90E1100FC839B /* 3.png */,
@@ -235,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B12AB76B1CAA600C000C210B /* Bg.png in Resources */,
 				B16FF1B21CA90E1100FC839B /* 7.png in Resources */,
 				B16FF1AF1CA90E1100FC839B /* 4.png in Resources */,
 				B17734FF1CA52B0600B5AD11 /* LaunchScreen.storyboard in Resources */,

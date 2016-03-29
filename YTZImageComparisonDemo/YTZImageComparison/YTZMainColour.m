@@ -115,7 +115,7 @@ int neighbourIndices[27][3] = {
 
 
 //选取图片主色调
-- (NSArray *)extractBrightColorsFromImage:(UIImage *)image avoidColor:(UIColor*)avoidColor count:(NSUInteger)count {
+- (NSArray<UIColor *> *)extractBrightColorsFromImage:(UIImage *)image avoidColor:(UIColor*)avoidColor maxCount:(NSUInteger)maxCount {
     //获取最大值
     //flags参数定义了集中不同的筛选条件
     NSArray *sortedMaxima = [self findAndSortMaximaInImage:image flags:OnlyDistinctColors];
@@ -126,7 +126,7 @@ int neighbourIndices[27][3] = {
     }
     
     //智能过滤不同色
-    sortedMaxima = [self performAdaptiveDistinctFilteringForMaxima:sortedMaxima count:count];
+    sortedMaxima = [self performAdaptiveDistinctFilteringForMaxima:sortedMaxima count:maxCount];
     
     //返回颜色Array
     return [self colorsFromMaxima:sortedMaxima];
