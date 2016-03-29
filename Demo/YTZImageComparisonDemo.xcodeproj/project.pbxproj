@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		B12AB76B1CAA600C000C210B /* Bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B12AB76A1CAA600C000C210B /* Bg.png */; };
+		B12AB7991CAA8569000C210B /* YTZEqualImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AB78F1CAA8569000C210B /* YTZEqualImage.m */; };
+		B12AB79A1CAA8569000C210B /* YTZGetColour.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AB7911CAA8569000C210B /* YTZGetColour.m */; };
+		B12AB79B1CAA8569000C210B /* YTZImageRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AB7931CAA8569000C210B /* YTZImageRecognition.m */; };
+		B12AB79C1CAA8569000C210B /* YTZLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AB7951CAA8569000C210B /* YTZLocalMaximum.m */; };
+		B12AB79D1CAA8569000C210B /* YTZMainColour.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AB7981CAA8569000C210B /* YTZMainColour.m */; };
+		B12AB7A41CAA85EB000C210B /* YTZEqualImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AB79F1CAA85EB000C210B /* YTZEqualImageVC.m */; };
+		B12AB7A51CAA85EB000C210B /* YTZGetColourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AB7A11CAA85EB000C210B /* YTZGetColourVC.m */; };
+		B12AB7A61CAA85EB000C210B /* YTZMainColourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AB7A31CAA85EB000C210B /* YTZMainColourVC.m */; };
 		B16FF1AD1CA90E1100FC839B /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = B16FF1A21CA90E1100FC839B /* 1.png */; };
 		B16FF1AE1CA90E1100FC839B /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = B16FF1A31CA90E1100FC839B /* 2.png */; };
 		B16FF1AF1CA90E1100FC839B /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = B16FF1A41CA90E1100FC839B /* 4.png */; };
@@ -24,19 +32,28 @@
 		B17734FA1CA52B0600B5AD11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17734F81CA52B0600B5AD11 /* Main.storyboard */; };
 		B17734FC1CA52B0600B5AD11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B17734FB1CA52B0600B5AD11 /* Assets.xcassets */; };
 		B17734FF1CA52B0600B5AD11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17734FD1CA52B0600B5AD11 /* LaunchScreen.storyboard */; };
-		B177351C1CA52DA100B5AD11 /* YTZEqualImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B17735081CA52DA100B5AD11 /* YTZEqualImageVC.m */; };
-		B177351D1CA52DA100B5AD11 /* YTZGetColourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B177350A1CA52DA100B5AD11 /* YTZGetColourVC.m */; };
-		B177351E1CA52DA100B5AD11 /* YTZMainColourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B177350C1CA52DA100B5AD11 /* YTZMainColourVC.m */; };
-		B177351F1CA52DA100B5AD11 /* YTZEqualImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B17735101CA52DA100B5AD11 /* YTZEqualImage.m */; };
-		B17735201CA52DA100B5AD11 /* YTZGetColour.m in Sources */ = {isa = PBXBuildFile; fileRef = B17735121CA52DA100B5AD11 /* YTZGetColour.m */; };
-		B17735211CA52DA100B5AD11 /* YTZImageRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = B17735141CA52DA100B5AD11 /* YTZImageRecognition.m */; };
-		B17735221CA52DA100B5AD11 /* YTZLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = B17735161CA52DA100B5AD11 /* YTZLocalMaximum.m */; };
-		B17735231CA52DA100B5AD11 /* YTZMainColour.m in Sources */ = {isa = PBXBuildFile; fileRef = B17735191CA52DA100B5AD11 /* YTZMainColour.m */; };
 		B17735241CA52DA100B5AD11 /* YTZRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B177351B1CA52DA100B5AD11 /* YTZRootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B12AB76A1CAA600C000C210B /* Bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bg.png; sourceTree = "<group>"; };
+		B12AB78E1CAA8569000C210B /* YTZEqualImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZEqualImage.h; sourceTree = "<group>"; };
+		B12AB78F1CAA8569000C210B /* YTZEqualImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZEqualImage.m; sourceTree = "<group>"; };
+		B12AB7901CAA8569000C210B /* YTZGetColour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZGetColour.h; sourceTree = "<group>"; };
+		B12AB7911CAA8569000C210B /* YTZGetColour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZGetColour.m; sourceTree = "<group>"; };
+		B12AB7921CAA8569000C210B /* YTZImageRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZImageRecognition.h; sourceTree = "<group>"; };
+		B12AB7931CAA8569000C210B /* YTZImageRecognition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZImageRecognition.m; sourceTree = "<group>"; };
+		B12AB7941CAA8569000C210B /* YTZLocalMaximum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZLocalMaximum.h; sourceTree = "<group>"; };
+		B12AB7951CAA8569000C210B /* YTZLocalMaximum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZLocalMaximum.m; sourceTree = "<group>"; };
+		B12AB7961CAA8569000C210B /* YTZMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZMacro.h; sourceTree = "<group>"; };
+		B12AB7971CAA8569000C210B /* YTZMainColour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZMainColour.h; sourceTree = "<group>"; };
+		B12AB7981CAA8569000C210B /* YTZMainColour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZMainColour.m; sourceTree = "<group>"; };
+		B12AB79E1CAA85EB000C210B /* YTZEqualImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZEqualImageVC.h; sourceTree = "<group>"; };
+		B12AB79F1CAA85EB000C210B /* YTZEqualImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZEqualImageVC.m; sourceTree = "<group>"; };
+		B12AB7A01CAA85EB000C210B /* YTZGetColourVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZGetColourVC.h; sourceTree = "<group>"; };
+		B12AB7A11CAA85EB000C210B /* YTZGetColourVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZGetColourVC.m; sourceTree = "<group>"; };
+		B12AB7A21CAA85EB000C210B /* YTZMainColourVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZMainColourVC.h; sourceTree = "<group>"; };
+		B12AB7A31CAA85EB000C210B /* YTZMainColourVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZMainColourVC.m; sourceTree = "<group>"; };
 		B16FF1A21CA90E1100FC839B /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		B16FF1A31CA90E1100FC839B /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		B16FF1A41CA90E1100FC839B /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
@@ -56,23 +73,6 @@
 		B17734FB1CA52B0600B5AD11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B17734FE1CA52B0600B5AD11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B17735001CA52B0600B5AD11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B17735071CA52DA100B5AD11 /* YTZEqualImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZEqualImageVC.h; sourceTree = "<group>"; };
-		B17735081CA52DA100B5AD11 /* YTZEqualImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZEqualImageVC.m; sourceTree = "<group>"; };
-		B17735091CA52DA100B5AD11 /* YTZGetColourVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZGetColourVC.h; sourceTree = "<group>"; };
-		B177350A1CA52DA100B5AD11 /* YTZGetColourVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZGetColourVC.m; sourceTree = "<group>"; };
-		B177350B1CA52DA100B5AD11 /* YTZMainColourVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZMainColourVC.h; sourceTree = "<group>"; };
-		B177350C1CA52DA100B5AD11 /* YTZMainColourVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZMainColourVC.m; sourceTree = "<group>"; };
-		B177350F1CA52DA100B5AD11 /* YTZEqualImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZEqualImage.h; sourceTree = "<group>"; };
-		B17735101CA52DA100B5AD11 /* YTZEqualImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZEqualImage.m; sourceTree = "<group>"; };
-		B17735111CA52DA100B5AD11 /* YTZGetColour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZGetColour.h; sourceTree = "<group>"; };
-		B17735121CA52DA100B5AD11 /* YTZGetColour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZGetColour.m; sourceTree = "<group>"; };
-		B17735131CA52DA100B5AD11 /* YTZImageRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZImageRecognition.h; sourceTree = "<group>"; };
-		B17735141CA52DA100B5AD11 /* YTZImageRecognition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZImageRecognition.m; sourceTree = "<group>"; };
-		B17735151CA52DA100B5AD11 /* YTZLocalMaximum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZLocalMaximum.h; sourceTree = "<group>"; };
-		B17735161CA52DA100B5AD11 /* YTZLocalMaximum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZLocalMaximum.m; sourceTree = "<group>"; };
-		B17735171CA52DA100B5AD11 /* YTZMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZMacro.h; sourceTree = "<group>"; };
-		B17735181CA52DA100B5AD11 /* YTZMainColour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZMainColour.h; sourceTree = "<group>"; };
-		B17735191CA52DA100B5AD11 /* YTZMainColour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZMainColour.m; sourceTree = "<group>"; };
 		B177351A1CA52DA100B5AD11 /* YTZRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZRootViewController.h; sourceTree = "<group>"; };
 		B177351B1CA52DA100B5AD11 /* YTZRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZRootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +88,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B12AB78D1CAA8569000C210B /* YTZImageComparison */ = {
+			isa = PBXGroup;
+			children = (
+				B12AB78E1CAA8569000C210B /* YTZEqualImage.h */,
+				B12AB78F1CAA8569000C210B /* YTZEqualImage.m */,
+				B12AB7901CAA8569000C210B /* YTZGetColour.h */,
+				B12AB7911CAA8569000C210B /* YTZGetColour.m */,
+				B12AB7921CAA8569000C210B /* YTZImageRecognition.h */,
+				B12AB7931CAA8569000C210B /* YTZImageRecognition.m */,
+				B12AB7941CAA8569000C210B /* YTZLocalMaximum.h */,
+				B12AB7951CAA8569000C210B /* YTZLocalMaximum.m */,
+				B12AB7961CAA8569000C210B /* YTZMacro.h */,
+				B12AB7971CAA8569000C210B /* YTZMainColour.h */,
+				B12AB7981CAA8569000C210B /* YTZMainColour.m */,
+			);
+			path = YTZImageComparison;
+			sourceTree = "<group>";
+		};
 		B17734E31CA52B0600B5AD11 = {
 			isa = PBXGroup;
 			children = (
@@ -107,12 +125,17 @@
 		B17734EE1CA52B0600B5AD11 /* YTZImageComparisonDemo */ = {
 			isa = PBXGroup;
 			children = (
-				B177350E1CA52DA100B5AD11 /* YTZImageComparison */,
+				B12AB78D1CAA8569000C210B /* YTZImageComparison */,
 				B17734F21CA52B0600B5AD11 /* AppDelegate.h */,
 				B17734F31CA52B0600B5AD11 /* AppDelegate.m */,
 				B177351A1CA52DA100B5AD11 /* YTZRootViewController.h */,
 				B177351B1CA52DA100B5AD11 /* YTZRootViewController.m */,
-				B17735061CA52DA100B5AD11 /* Classes */,
+				B12AB7A21CAA85EB000C210B /* YTZMainColourVC.h */,
+				B12AB7A31CAA85EB000C210B /* YTZMainColourVC.m */,
+				B12AB7A01CAA85EB000C210B /* YTZGetColourVC.h */,
+				B12AB7A11CAA85EB000C210B /* YTZGetColourVC.m */,
+				B12AB79E1CAA85EB000C210B /* YTZEqualImageVC.h */,
+				B12AB79F1CAA85EB000C210B /* YTZEqualImageVC.m */,
 				B177350D1CA52DA100B5AD11 /* Resources */,
 				B17734F81CA52B0600B5AD11 /* Main.storyboard */,
 				B17734FB1CA52B0600B5AD11 /* Assets.xcassets */,
@@ -129,19 +152,6 @@
 				B17734F01CA52B0600B5AD11 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B17735061CA52DA100B5AD11 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				B177350B1CA52DA100B5AD11 /* YTZMainColourVC.h */,
-				B177350C1CA52DA100B5AD11 /* YTZMainColourVC.m */,
-				B17735091CA52DA100B5AD11 /* YTZGetColourVC.h */,
-				B177350A1CA52DA100B5AD11 /* YTZGetColourVC.m */,
-				B17735071CA52DA100B5AD11 /* YTZEqualImageVC.h */,
-				B17735081CA52DA100B5AD11 /* YTZEqualImageVC.m */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		B177350D1CA52DA100B5AD11 /* Resources */ = {
@@ -161,24 +171,6 @@
 				B16FF1AA1CA90E1100FC839B /* 11.png */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		B177350E1CA52DA100B5AD11 /* YTZImageComparison */ = {
-			isa = PBXGroup;
-			children = (
-				B17735171CA52DA100B5AD11 /* YTZMacro.h */,
-				B17735151CA52DA100B5AD11 /* YTZLocalMaximum.h */,
-				B17735161CA52DA100B5AD11 /* YTZLocalMaximum.m */,
-				B17735181CA52DA100B5AD11 /* YTZMainColour.h */,
-				B17735191CA52DA100B5AD11 /* YTZMainColour.m */,
-				B17735111CA52DA100B5AD11 /* YTZGetColour.h */,
-				B17735121CA52DA100B5AD11 /* YTZGetColour.m */,
-				B177350F1CA52DA100B5AD11 /* YTZEqualImage.h */,
-				B17735101CA52DA100B5AD11 /* YTZEqualImage.m */,
-				B17735131CA52DA100B5AD11 /* YTZImageRecognition.h */,
-				B17735141CA52DA100B5AD11 /* YTZImageRecognition.m */,
-			);
-			path = YTZImageComparison;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,17 +255,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B17735221CA52DA100B5AD11 /* YTZLocalMaximum.m in Sources */,
-				B177351F1CA52DA100B5AD11 /* YTZEqualImage.m in Sources */,
-				B177351E1CA52DA100B5AD11 /* YTZMainColourVC.m in Sources */,
-				B177351C1CA52DA100B5AD11 /* YTZEqualImageVC.m in Sources */,
-				B17735211CA52DA100B5AD11 /* YTZImageRecognition.m in Sources */,
+				B12AB79A1CAA8569000C210B /* YTZGetColour.m in Sources */,
+				B12AB79C1CAA8569000C210B /* YTZLocalMaximum.m in Sources */,
+				B12AB79D1CAA8569000C210B /* YTZMainColour.m in Sources */,
+				B12AB7A51CAA85EB000C210B /* YTZGetColourVC.m in Sources */,
+				B12AB7991CAA8569000C210B /* YTZEqualImage.m in Sources */,
 				B17734F41CA52B0600B5AD11 /* AppDelegate.m in Sources */,
+				B12AB79B1CAA8569000C210B /* YTZImageRecognition.m in Sources */,
+				B12AB7A41CAA85EB000C210B /* YTZEqualImageVC.m in Sources */,
 				B17734F11CA52B0600B5AD11 /* main.m in Sources */,
-				B177351D1CA52DA100B5AD11 /* YTZGetColourVC.m in Sources */,
-				B17735231CA52DA100B5AD11 /* YTZMainColour.m in Sources */,
-				B17735201CA52DA100B5AD11 /* YTZGetColour.m in Sources */,
 				B17735241CA52DA100B5AD11 /* YTZRootViewController.m in Sources */,
+				B12AB7A61CAA85EB000C210B /* YTZMainColourVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +376,6 @@
 		B17735041CA52B0600B5AD11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YTZImageComparisonDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Job-Yang.YTZImageComparisonDemo";
@@ -395,7 +386,6 @@
 		B17735051CA52B0600B5AD11 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YTZImageComparisonDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Job-Yang.YTZImageComparisonDemo";
