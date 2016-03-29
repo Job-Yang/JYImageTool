@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                    DESC
 
-  s.homepage     = “https://github.com/Job-Yang/YTZImageComparison"
+  s.homepage     = "https://github.com/Job-Yang/YTZImageComparison"
   # s.screenshots  = "https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo1.png"
 
 
