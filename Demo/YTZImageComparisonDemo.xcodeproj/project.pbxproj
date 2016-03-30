@@ -75,6 +75,7 @@
 		B17735001CA52B0600B5AD11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B177351A1CA52DA100B5AD11 /* YTZRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTZRootViewController.h; sourceTree = "<group>"; };
 		B177351B1CA52DA100B5AD11 /* YTZRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTZRootViewController.m; sourceTree = "<group>"; };
+		B1BB2B521CAB67B7002EFAF4 /* YTZImageComparison.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YTZImageComparison.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,17 +92,18 @@
 		B12AB78D1CAA8569000C210B /* YTZImageComparison */ = {
 			isa = PBXGroup;
 			children = (
-				B12AB78E1CAA8569000C210B /* YTZEqualImage.h */,
-				B12AB78F1CAA8569000C210B /* YTZEqualImage.m */,
-				B12AB7901CAA8569000C210B /* YTZGetColour.h */,
-				B12AB7911CAA8569000C210B /* YTZGetColour.m */,
-				B12AB7921CAA8569000C210B /* YTZImageRecognition.h */,
-				B12AB7931CAA8569000C210B /* YTZImageRecognition.m */,
-				B12AB7941CAA8569000C210B /* YTZLocalMaximum.h */,
-				B12AB7951CAA8569000C210B /* YTZLocalMaximum.m */,
+				B1BB2B521CAB67B7002EFAF4 /* YTZImageComparison.h */,
 				B12AB7961CAA8569000C210B /* YTZMacro.h */,
 				B12AB7971CAA8569000C210B /* YTZMainColour.h */,
 				B12AB7981CAA8569000C210B /* YTZMainColour.m */,
+				B12AB7941CAA8569000C210B /* YTZLocalMaximum.h */,
+				B12AB7951CAA8569000C210B /* YTZLocalMaximum.m */,
+				B12AB7901CAA8569000C210B /* YTZGetColour.h */,
+				B12AB7911CAA8569000C210B /* YTZGetColour.m */,
+				B12AB78E1CAA8569000C210B /* YTZEqualImage.h */,
+				B12AB78F1CAA8569000C210B /* YTZEqualImage.m */,
+				B12AB7921CAA8569000C210B /* YTZImageRecognition.h */,
+				B12AB7931CAA8569000C210B /* YTZImageRecognition.m */,
 			);
 			path = YTZImageComparison;
 			sourceTree = "<group>";
