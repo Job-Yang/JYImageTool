@@ -11,8 +11,8 @@ Pod::Spec.new do |s|
   s.source       = { :git => 'https://github.com/Job-Yang/YTZImageComparison.git', :tag => s.version.to_s }
   
   s.requires_arc = true
-  s.source_files = 'YTZImageComparison/*.{h,m}'
-  s.public_header_files = 'YTZImageComparison/*.{h}'
+  s.source_files = 'YTZImageComparison/**/*.{h,m}'
+  s.public_header_files = 'YTZImageComparison/**/*.{h}'
   
   s.frameworks = 'UIKit'
   

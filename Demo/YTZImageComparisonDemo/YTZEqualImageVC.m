@@ -7,7 +7,7 @@
 //
 
 #import "YTZEqualImageVC.h"
-#import "YTZEqualImage.h"
+#import "YTZImageComparison.h"
 
 //屏幕宽度
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
