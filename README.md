@@ -53,6 +53,7 @@ YTZImageComparison
 ##  演示Demo
 
 **1.提取图片主色**
+
 ![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo1.png)
 
 ![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo1.png)
