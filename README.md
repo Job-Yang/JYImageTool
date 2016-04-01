@@ -8,12 +8,10 @@ YTZImageComparison
 [![CocoaPods](http://img.shields.io/cocoapods/p/YTZImageComparison.svg?style=flat)](http://cocoapods.org/?q=YTZImageComparison)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS%208%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
 
--------
 ##总述
 
  YTZImageComparison是一个使用Objective-C编写，基于对图片颜色分析的一款取色，图片对比的开源框架。实现了对图片优势色（主色）的提取，取出图片对应点颜色、对图片进行简单的相同/相似比较。其中取主色的算法借鉴了GitHub上的开源项目[ColorCube](https://github.com/pixelogik/ColorCube)。
 
---------------
 ##算法简介
 
 #### 1. 提取图片主色的算法实现
@@ -40,7 +38,6 @@ YTZImageComparison
 - 匹配度高于最低相等阀值则视为图片相同。
 - 对于相同图片的算法主要是基于对像素的色差对比，这样的对比的结果是稳定的。
 
---------
   
 ##效果图
 
@@ -76,7 +73,6 @@ YTZImageComparison
 
 ![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/EqualImageDemo4.png)
 
---------
 
 ##安装
 ### CocoaPods
@@ -92,8 +88,8 @@ YTZImageComparison
 2. 将 YTZImageComparison 内的源文件添加(拖放)到你的工程。
 3. 导入 `YTZImageComparison.h`.
 
--------
 
 ##许可证
 YTZImageComparison 使用 MIT 许可证，详情见 LICENSE 文件。
+
 
