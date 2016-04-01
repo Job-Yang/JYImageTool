@@ -36,17 +36,17 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _imageViewOne = [[UIImageView alloc]initWithFrame:CGRectMake(0 , 64, SCREEN_WIDTH, SCREEN_HEIGHT/2-50)];
+    _imageViewOne = [[UIImageView alloc]initWithFrame:CGRectMake(0 , 64, SCREEN_WIDTH, (SCREEN_HEIGHT-64-50)/2)];
     [_imageViewOne setContentMode:UIViewContentModeScaleAspectFill];
     _imageViewOne.layer.masksToBounds = YES;
     [self.view addSubview:_imageViewOne];
     
-    _imageViewTwo = [[UIImageView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/2-50, SCREEN_WIDTH, SCREEN_HEIGHT/2-50)];
+    _imageViewTwo = [[UIImageView alloc]initWithFrame:CGRectMake(0, (SCREEN_HEIGHT-64-50)/2+64, SCREEN_WIDTH, (SCREEN_HEIGHT-64-50)/2)];
     [_imageViewTwo setContentMode:UIViewContentModeScaleAspectFill];
     _imageViewTwo.layer.masksToBounds = YES;
     [self.view addSubview:_imageViewTwo];
     
-    _label = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT/2-80, 200, 60)];
+    _label = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, (SCREEN_HEIGHT-64-50)/2+30, 200, 60)];
     [_label setTextColor:[UIColor whiteColor]];
     _label.textAlignment = NSTextAlignmentCenter;
     _label.font = [UIFont systemFontOfSize:35.f];
@@ -74,8 +74,7 @@
     _imageViewTwo.image = [UIImage imageWithContentsOfFile:imagePath2];
     
     //判断是否相同
-    YTZEqualImage *equalImage = [[YTZEqualImage alloc]init];
-    BOOL isEqual = [equalImage isEqualToImage:_imageViewOne.image imageTwo:_imageViewTwo.image];
+    BOOL isEqual = [UIImage isEqualToImage:_imageViewOne.image imageTwo:_imageViewTwo.image];
     if (isEqual) {
         _label.backgroundColor = [UIColor greenColor];
         _label.text = @"相同图片";

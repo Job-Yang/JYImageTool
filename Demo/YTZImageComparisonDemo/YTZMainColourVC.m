@@ -75,9 +75,9 @@
     _imageView.image = currentImage;
     
     //得到主色
-//    UIColor *whiteColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
-//    _colorArr = [[YTZMainColour sharedMainColour] extractBrightColorsFromImage:currentImage avoidColor:whiteColor maxCount:10];
-    _colorArr = [[YTZMainColour sharedMainColour] extractBrightColorsFromImage:currentImage avoidColor:nil maxCount:10];
+    UIColor *whiteColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
+    _colorArr = [[YTZMainColour sharedMainColour] extractBrightColorsFromImage:currentImage avoidColor:whiteColor maxCount:10];
+//    _colorArr = [[YTZMainColour sharedMainColour] extractBrightColorsFromImage:currentImage avoidColor:nil maxCount:10];
     [_collectionView reloadData];
     
     [_button setBackgroundColor:[_colorArr firstObject]];

@@ -60,8 +60,7 @@
     CGPoint point = [tap locationInView:_imageView];
     
     //得到对应点颜色
-    YTZGetColour *getColour = [[YTZGetColour alloc]init];
-    self.view.backgroundColor = [getColour getPixelColorAtLocation:point inImage:_imageView.image formImageRect:_imageView.frame];
+    self.view.backgroundColor = [UIColor getPixelColorAtLocation:point inImage:_imageView.image formImageRect:_imageView.frame];
 }
 
 - (void)nextImage {

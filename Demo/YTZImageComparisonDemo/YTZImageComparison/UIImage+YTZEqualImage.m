@@ -1,32 +1,26 @@
 //
-//  YTZEqualImage.m
+//  UIImage+YTZEqualImage.m
 //  YTZImageComparisonDemo
 //
-//  Created by 杨权 on 16/3/24.
+//  Created by 杨权 on 16/4/1.
 //  Copyright © 2016年 Job-Yang. All rights reserved.
 //
 
-#import "YTZEqualImage.h"
+#import "UIImage+YTZEqualImage.h"
 #import "YTZMainColour.h"
 #import "YTZMacro.h"
 
-@interface YTZEqualImage()
-
-
-@end
-
-@implementation YTZEqualImage
-
+@implementation UIImage (YTZEqualImage)
 
 //对比两张图片是否相等
-- (BOOL)isEqualToImage:(UIImage *)imageOne imageTwo:(UIImage *)imageTwo {
++ (BOOL)isEqualToImage:(UIImage *)imageOne imageTwo:(UIImage *)imageTwo {
     //图片压缩尺寸
-    CGRect Rect = CGRectMake(0, 0, COLOR_CUBE_RESOLUTION, COLOR_CUBE_RESOLUTION);
+    CGRect rect = CGRectMake(0, 0, COLOR_CUBE_RESOLUTION, COLOR_CUBE_RESOLUTION);
     
     //获得第一张图片的ARGB信息
     CGImageRef ImageOneRef = imageOne.CGImage;
-    CGContextRef cgctxOne = [[YTZMainColour sharedMainColour] createARGBBitmapContextFromImage:ImageOneRef imageRect:Rect];
-    CGContextDrawImage(cgctxOne, Rect, ImageOneRef);
+    CGContextRef cgctxOne = [[YTZMainColour sharedMainColour] createARGBBitmapContextFromImage:ImageOneRef imageRect:rect];
+    CGContextDrawImage(cgctxOne, rect, ImageOneRef);
     unsigned char* dataOne = CGBitmapContextGetData (cgctxOne);
     
     //释放cgctxOne
@@ -34,8 +28,8 @@
     
     //获得第二张图片的ARGB信息
     CGImageRef ImageTwoRef = imageTwo.CGImage;
-    CGContextRef cgctxTwo = [[YTZMainColour sharedMainColour] createARGBBitmapContextFromImage:ImageTwoRef imageRect:Rect];
-    CGContextDrawImage(cgctxTwo, Rect, ImageTwoRef);
+    CGContextRef cgctxTwo = [[YTZMainColour sharedMainColour] createARGBBitmapContextFromImage:ImageTwoRef imageRect:rect];
+    CGContextDrawImage(cgctxTwo, rect, ImageTwoRef);
     unsigned char* dataTwo = CGBitmapContextGetData (cgctxTwo);
     
     //释放cgctxTwo
