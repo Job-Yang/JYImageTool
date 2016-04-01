@@ -56,11 +56,11 @@ YTZImageComparison
 
 ![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo1.png)
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo1.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo2.png)
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo1.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo3.png)
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo1.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo4.png)
 
 
 **2.提取图片对应点(像素)颜色**
