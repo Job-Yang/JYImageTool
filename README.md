@@ -53,29 +53,36 @@ YTZImageComparison
 ##  演示Demo
 
 **1.提取图片主色**
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo1.png)
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/%E5%8F%96%E4%BC%98%E5%8A%BF%E8%89%B21.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo1.png)
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/%E5%8F%96%E4%BC%98%E5%8A%BF%E8%89%B22.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo1.png)
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/%E5%8F%96%E4%BC%98%E5%8A%BF%E8%89%B23.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/MainColourDemo1.png)
 
 
 **2.提取图片对应点(像素)颜色**
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%82%B9%E9%A2%9C%E8%89%B21.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/GetColourDemo1.png)
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%82%B9%E9%A2%9C%E8%89%B22.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/GetColourDemo2.png)
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%82%B9%E9%A2%9C%E8%89%B23.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/GetColourDemo3.png)
+
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/GetColourDemo4.png)
 
 
-**3.图片相同/相似**
+**3.图片相同**
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/%E5%9B%BE%E7%89%87%E5%AF%B9%E6%AF%941.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/EqualImageDemo1.png)
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/%E5%9B%BE%E7%89%87%E5%AF%B9%E6%AF%942.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/EqualImageDemo2.png)
 
-![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/%E5%9B%BE%E7%89%87%E5%AF%B9%E6%AF%943.png)
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/EqualImageDemo3.png)
+
+![YTZImageComparison](https://github.com/Job-Yang/YTZImageComparison/blob/master/ScreenShots/EqualImageDemo4.png)
+
+
 
   
