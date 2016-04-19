@@ -13,7 +13,7 @@
 /**
  *  取色方式Flags
  */
-typedef NS_ENUM(NSInteger, Flags) {
+typedef NS_OPTIONS(NSInteger, Flags) {
     /**
      *  忽略所有比阈值暗的像素
      */

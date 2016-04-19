@@ -1,15 +1,14 @@
 //
-//  YTZEqualImage.h
+//  UIImage+YTZEqualImage.h
 //  YTZImageComparisonDemo
 //
-//  Created by 杨权 on 16/3/24.
+//  Created by 杨权 on 16/4/1.
 //  Copyright © 2016年 Job-Yang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface YTZEqualImage : NSObject
-
+@interface UIImage (YTZEqualImage)
 
 /**
  *  判断图片是否相同
@@ -19,6 +18,6 @@
  *
  *  @return 是否相同
  */
-- (BOOL)isEqualToImage:(UIImage *)imageOne imageTwo:(UIImage *)imageTwo;
++ (BOOL)isEqualToImage:(UIImage *)imageOne imageTwo:(UIImage *)imageTwo;
 
 @end

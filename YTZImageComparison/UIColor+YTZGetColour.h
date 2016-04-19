@@ -1,14 +1,14 @@
 //
-//  YTZGetColour.h
+//  UIColor+YTZGetColour.h
 //  YTZImageComparisonDemo
 //
-//  Created by 杨权 on 16/3/24.
+//  Created by 杨权 on 16/4/1.
 //  Copyright © 2016年 Job-Yang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface YTZGetColour : NSObject
+@interface UIColor (YTZGetColour)
 
 /**
  *  获得point点处的颜色
@@ -19,6 +19,6 @@
  *
  *  @return 返回point点处的颜色
  */
-- (UIColor*)getPixelColorAtLocation:(CGPoint)point inImage:(UIImage *)image formImageRect:(CGRect)rect;
++ (UIColor*)getPixelColorAtLocation:(CGPoint)point inImage:(UIImage *)image formImageRect:(CGRect)rect;
 
 @end

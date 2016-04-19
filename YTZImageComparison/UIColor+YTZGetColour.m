@@ -1,23 +1,19 @@
 //
-//  YTZGetColour.m
+//  UIColor+YTZGetColour.m
 //  YTZImageComparisonDemo
 //
-//  Created by 杨权 on 16/3/24.
+//  Created by 杨权 on 16/4/1.
 //  Copyright © 2016年 Job-Yang. All rights reserved.
 //
 
-#import "YTZGetColour.h"
+#import "UIColor+YTZGetColour.h"
 #import "YTZMainColour.h"
 #import "YTZMacro.h"
 
-@interface YTZGetColour()
-
-@end
-
-@implementation YTZGetColour
+@implementation UIColor (YTZGetColour)
 
 //获取图片点point处的像素颜色
-- (UIColor*)getPixelColorAtLocation:(CGPoint)point inImage:(UIImage *)image formImageRect:(CGRect)rect {
++ (UIColor*)getPixelColorAtLocation:(CGPoint)point inImage:(UIImage *)image formImageRect:(CGRect)rect {
     
     //获得图片上下文
     UIColor* color = nil;
