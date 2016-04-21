@@ -179,8 +179,20 @@ int neighbourIndices[27][3] = {
         return NULL;
         
     }
-    //参数2 为枚举值 kCGImageAlphaPremultipliedFirst
-    context = CGBitmapContextCreate (bitmapData, pixelsWide, pixelsHigh, 8, bitmapBytesPerRow, colorSpace, 2);
+    /**
+     *  获得位图上下文
+     *
+     *  @param bitmapData                 指向要渲染的绘制内存的地址
+     *  @param pixelsWide                 bitmap的宽度,单位为像素
+     *  @param pixelsHigh                 bitmap的高度,单位为像素
+     *  @param 8                          内存中像素的每个组件的位数.例如，对于32位像素格式和RGB 颜色空间，你应该将这个值设为8.
+     *  @param bitmapBytesPerRow          bitmap的每一行在内存所占的比特数
+     *  @param colorSpace                 bitmap上下文使用的颜色空间。
+     *  @param kCGBitmapByteOrder32Little 指定bitmap是否包含alpha通道，像素中alpha通道的相对位置，像素组件是整形还是浮点型等信息的字符串。
+     *
+     *  @return 位图上下文
+     */
+    context = CGBitmapContextCreate (bitmapData, pixelsWide, pixelsHigh, 8, bitmapBytesPerRow, colorSpace, kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrder32Big);
     
     if (context == NULL)
         
