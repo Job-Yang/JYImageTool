@@ -10,7 +10,7 @@ YTZImageComparison
 
 ##总述
 
- YTZImageComparison是一个使用Objective-C编写，基于对图片颜色分析的一款取色，图片对比的开源框架。实现了对图片优势色（主色）的提取，取出图片对应点颜色、对图片进行简单的相同/相似比较。其中取主色的算法借鉴了GitHub上的开源项目[ColorCube](https://github.com/pixelogik/ColorCube)。
+ YTZImageComparison是一个使用Objective-C编写，基于对图片颜色分析的一款取色，图片对比的开源库。实现了对图片优势色（主色）的提取，取出图片对应点颜色、对图片进行简单的相同/相似比较。其中取主色的算法借鉴了GitHub上的开源项目[ColorCube](https://github.com/pixelogik/ColorCube)。
 
 ##算法简介
 
