@@ -1,6 +1,6 @@
 
 
-YTZImageComparison
+JYImageTool
 ==============
 
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/Job-Yang/YTZImageComparison/master/LICENSE)&nbsp;
@@ -10,7 +10,7 @@ YTZImageComparison
 
 ##总述
 
- YTZImageComparison是一个使用Objective-C编写，基于对图片颜色分析的一款取色，图片对比的开源库。实现了对图片优势色（主色）的提取，取出图片对应点颜色、对图片进行简单的相同/相似比较。其中取主色的算法借鉴了GitHub上的开源项目[ColorCube](https://github.com/pixelogik/ColorCube)。
+ JYImageTool是一个使用Objective-C编写，基于对图片颜色分析的一款取色，图片对比的开源库。实现了对图片优势色（主色）的提取，取出图片对应点颜色、对图片进行简单的相同/相似比较。其中取主色的算法借鉴了GitHub上的开源项目[ColorCube](https://github.com/pixelogik/ColorCube)。
 
 ##算法简介
 
@@ -22,15 +22,15 @@ YTZImageComparison
 - 如果是，则将他加入鲜艳色数组;
 - 计算鲜艳色出现的频率，按照频率高低加入到返回值数组。
 - 其中可根据多个枚举值来定制"鲜艳"的标准，也可以设置忽略一个RGB色彩空间的颜色，避免一些颜色的干扰。
- 
- 
+
+
 #### 2. 提取图片对应点(像素)颜色的算法实现
 - 将传入的图片重绘为小尺寸的图片;
 - 先得到重绘后图片的ARGB分量值；
 - 由参数Rect算出该像素ARGB信息在字符数组中的位置；
 - 返回一个该ARGB分量组合成的UIColor。
- 
- 
+
+
 #### 3. 图片相同的算法实现
 - 将传入两张的图片重绘为相同的小尺寸的图片;
 - 先得到重绘后图片的ARGB分量值；
@@ -38,7 +38,7 @@ YTZImageComparison
 - 匹配度高于最低相等阀值则视为图片相同。
 - 对于相同图片的算法主要是基于对像素的色差对比，这样的对比的结果是稳定的。
 
-  
+
 ##效果图
 
 **1. 提取图片主色**
@@ -78,18 +78,18 @@ YTZImageComparison
 ### CocoaPods
 
 1. 将 cocoapods 更新至最新版本.
-2. 在 Podfile 中添加 `pod 'YTZImageComparison'`。
+2. 在 Podfile 中添加 `pod 'JYImageTool'`。
 3. 执行 `pod install` 或 `pod update`。
-4. 导入 `"YTZImageComparison.h"`。
+4. 导入 `"JYImageTool.h"`。
 
 ### 手动安装
 
-1. 下载 YTZImageComparison 文件夹内的所有内容。
-2. 将 YTZImageComparison 内的源文件添加(拖放)到你的工程。
-3. 导入 `YTZImageComparison.h`.
+1. 下载 JYImageTool 文件夹内的所有内容。
+2. 将 JYImageTool 内的源文件添加(拖放)到你的工程。
+3. 导入 `JYImageTool.h`.
 
 
 ##许可证
-YTZImageComparison 使用 MIT 许可证，详情见 LICENSE 文件。
+JYImageTool 使用 MIT 许可证，详情见 LICENSE 文件。
 
 
