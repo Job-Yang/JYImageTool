@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'JYImageTool'
-  s.summary      = 'Image compariosn recognition framework.'
+  s.summary      = 'Useful image tools for iOS.'
   s.version      = '1.1'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Job-Yang" => "578093143@qq.com" }
