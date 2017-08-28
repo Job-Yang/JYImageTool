@@ -1,14 +1,14 @@
 Pod::Spec.new do |s|
   s.name         = 'JYImageTool'
   s.summary      = 'Useful image tools for iOS.'
-  s.version      = '1.1'
+  s.version      = '2.0'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Job-Yang" => "578093143@qq.com" }
   s.social_media_url = 'http://www.jianshu.com/users/cf7e85326534/latest_articles'
   s.homepage     = 'https://github.com/Job-Yang/JYImageTool'
-  s.platform     = :ios, '8.0'
-  s.ios.deployment_target = '8.0'
-  s.source       = { :git => 'https://github.com/Job-Yang/JYImageTool.git', :tag => s.version}
+  s.platform     = :ios, '6.0'
+  s.ios.deployment_target = '6.0'
+  s.source       = { :git => 'https://github.com/Job-Yang/JYImageTool.git', :tag => s.version.to_s }
   
   s.requires_arc = true
   s.source_files = 'JYImageTool/**/*.{h,m}'
