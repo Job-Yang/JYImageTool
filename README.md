@@ -27,10 +27,10 @@ Usage
 	NSArray *colorArr = [[JYImageTool tool] extractBrightColorsFromImage:image avoidColor:whiteColor maxCount:10];
 
 
-###Extract the image pixel color
+### Extract the image pixel color
 	UIColor *color = [[JYImageTool tool] pixelColorAtLocation:point inImage:image formImageRect:frame];
 
-###Contrast image is equal
+### Contrast image is equal
 	BOOL isEqual = [[JYImageTool tool] isEqualToImage:imageOne imageTwo:imageTwo];
 	if (isEqual) {
 		//...Do something..
@@ -56,5 +56,5 @@ Installation
 3. Import `JYImageTool.h`.
 
 
-##License
+### License
 JYImageTool is released under the MIT license. See LICENSE file for details.
