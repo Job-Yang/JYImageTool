@@ -23,34 +23,37 @@ Usage
 ==============
 
 ### Extract the primary color of the image
-	UIColor *whiteColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
-	NSArray *colorArr = [[JYImageTool tool] extractBrightColorsFromImage:image avoidColor:whiteColor maxCount:10];
-
+```Objective-C
+UIColor *whiteColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
+NSArray *colorArr = [[JYImageTool tool] extractBrightColorsFromImage:image avoidColor:whiteColor maxCount:10];
+```
 
 ### Extract the image pixel color
-	UIColor *color = [[JYImageTool tool] pixelColorAtLocation:point inImage:image formImageRect:frame];
+```Objective-C
+UIColor *color = [[JYImageTool tool] pixelColorAtLocation:point inImage:image formImageRect:frame];
+```
 
 ### Contrast image is equal
-	BOOL isEqual = [[JYImageTool tool] isEqualToImage:imageOne imageTwo:imageTwo];
-	if (isEqual) {
-		//...Do something..
-	}
-	else {
-		//...Do something..
-	}
+```Objective-C
+BOOL isEqual = [[JYImageTool tool] isEqualToImage:imageOne imageTwo:imageTwo];
+if (isEqual) {
+	//...Do something..
+}
+else {
+	//...Do something..
+}
+```
 
 Installation
 ==============
 
 ### CocoaPods
-
 1. Add `pod 'JYImageTool'` to your Podfile.
 2. Run `pod install` or `pod update`.
 3. Import `"JYImageTool.h"`.
 
 
 ### Manually
-
 1. Download all the files in the `JYImageTool` subdirectory.
 2. Add the source files to your Xcode project.
 3. Import `JYImageTool.h`.
