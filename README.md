@@ -6,7 +6,7 @@ JYImageTool
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/Job-Yang/YTZImageComparison/master/LICENSE)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/v/YTZImageComparison.svg?style=flat)](http://cocoapods.org/?q=YTZImageComparison)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/p/YTZImageComparison.svg?style=flat)](http://cocoapods.org/?q=YTZImageComparison)&nbsp;
-[![Support](https://img.shields.io/badge/support-iOS%208%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
+[![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
 
 Useful image tools for iOS
 
@@ -25,6 +25,7 @@ Usage
 ### Extract the primary color of the image
 ```Objective-C
 UIColor *whiteColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
+// extract bright colors and avoid results if close to white color
 NSArray *colorArr = [[JYImageTool tool] extractBrightColorsFromImage:image avoidColor:whiteColor maxCount:10];
 ```
 
@@ -37,10 +38,10 @@ UIColor *color = [[JYImageTool tool] pixelColorAtLocation:point inImage:image fo
 ```Objective-C
 BOOL isEqual = [[JYImageTool tool] isEqualToImage:imageOne imageTwo:imageTwo];
 if (isEqual) {
-	//...Do something..
+//...Do something..
 }
 else {
-	//...Do something..
+//...Do something..
 }
 ```
 
@@ -61,3 +62,64 @@ Installation
 
 ### License
 JYImageTool is released under the MIT license. See LICENSE file for details.
+
+
+
+---
+中文介绍
+==============
+
+实用的iOS图片工具
+
+
+特性
+==============
+
+- 图片主色提取（包含多种提取模式）
+- 图片像素点颜色提取
+- 图片相同比较（基于图片像素而非图片名）
+
+
+Usage
+==============
+
+### 图片主色提取
+```Objective-C
+UIColor *whiteColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
+// 提取较附近更亮的主色，并忽略太接近白色的提取结果
+NSArray *colorArr = [[JYImageTool tool] extractBrightColorsFromImage:image avoidColor:whiteColor maxCount:10];
+```
+
+### 图片像素点颜色提取
+```Objective-C
+UIColor *color = [[JYImageTool tool] pixelColorAtLocation:point inImage:image formImageRect:frame];
+```
+
+### 图片相同比较
+```Objective-C
+BOOL isEqual = [[JYImageTool tool] isEqualToImage:imageOne imageTwo:imageTwo];
+if (isEqual) {
+//...Do something..
+}
+else {
+//...Do something..
+}
+```
+
+安装
+==============
+
+### CocoaPods
+1. 在 Podfile 中添加 `pod 'JYImageTool'` .
+2. 执行 `pod install` 或 `pod update`.
+3. 导入 `"JYImageTool.h"`.
+
+
+### 手动安装
+1. 下载 JYImageTool 文件夹内的所有内容。
+2. 将 JYImageTool 内的源文件添加(拖放)到你的工程。
+3. 导入 `JYImageTool.h`。
+
+
+### 许可证
+JYImageTool 使用 MIT 许可证，详情见 LICENSE 文件。
