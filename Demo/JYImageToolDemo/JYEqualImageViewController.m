@@ -9,7 +9,7 @@
 #import "JYEqualImageViewController.h"
 #import "JYImageTool.h"
 
-#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
 @interface JYEqualImageViewController ()
@@ -66,7 +66,7 @@
 #pragma mark - getter & setter
 - (UIImageView *)imageViewOne {
     if (!_imageViewOne) {
-        _imageViewOne = [[UIImageView alloc]initWithFrame:CGRectMake(0 , 64, SCREEN_WIDTH, (SCREEN_HEIGHT-64-50)/2)];
+        _imageViewOne = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, (SCREEN_HEIGHT-64-50)/2)];
         [_imageViewOne setContentMode:UIViewContentModeScaleAspectFill];
         _imageViewOne.layer.masksToBounds = YES;
         [self.view addSubview:_imageViewOne];

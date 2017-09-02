@@ -172,4 +172,36 @@ typedef struct {
                           inImage:(UIImage *)image
                     formImageRect:(CGRect)rect;
 
+/**
+ 识别图片中的二维码
+
+ @param image 需要识别的图片
+ @return 二维码字符串
+ */
+- (NSString *)readQRCodeFromImage:(UIImage *)image;
+
+/**
+ 生成二维码图片
+
+ @param string    二维码信息
+ @param imageSize 二维码图片边长
+ @return 二维码图片
+ */
+- (UIImage *)QRCodeImageFromString:(NSString *)string
+                         imageSize:(CGFloat)imageSize;
+
+/**
+ 生成中心带logo二维码图片
+
+ @param string        二维码信息
+ @param imageSize     二维码图片边长
+ @param logoImageName logo图片名
+ @param logoSize      logo图片边长
+ @return 二维码图片
+ */
+- (UIImage *)QRCodeImageFromString:(NSString *)string
+                         imageSize:(CGFloat)imageSize
+                     logoImageName:(NSString *)logoImageName
+                          logoSize:(CGFloat)logoSize;
+
 @end

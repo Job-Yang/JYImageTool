@@ -37,6 +37,7 @@ int neighbourIndices[27][3] = {
 }
 @end
 
+
 @implementation JYImageTool
 
 + (instancetype)tool {
@@ -593,6 +594,86 @@ int neighbourIndices[27][3] = {
     return color;
 }
 
+- (NSString *)readQRCodeFromImage:(UIImage *)image {
+    if (!image) {return nil;}
+    //取出选中的图片
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    CIImage *ciImage = [CIImage imageWithData:imageData];
+    //创建探测器
+    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode
+                                              context:nil
+                                              options:@{CIDetectorAccuracy:CIDetectorAccuracyLow}];
+    NSArray *feature = [detector featuresInImage:ciImage];
+    
+    //取出探测到的数据
+    for (CIQRCodeFeature *result in feature) {
+        return result.messageString;
+    }
+    return nil;
+}
+
+- (UIImage *)QRCodeImageFromString:(NSString *)string
+                         imageSize:(CGFloat)imageSize {
+    
+    return [self QRCodeImageFromString:string
+                             imageSize:imageSize
+                         logoImageName:nil
+                              logoSize:0];
+}
+
+- (UIImage *)QRCodeImageFromString:(NSString *)string
+                         imageSize:(CGFloat)imageSize
+                     logoImageName:(NSString *)logoImageName
+                          logoSize:(CGFloat)logoSize {
+    UIImage *outputImage;
+
+    CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+    [filter setDefaults];
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    [filter setValue:data forKey:@"inputMessage"];
+    //设置二维码的纠错水平，越高纠错水平越高，可以污损的范围越大
+    [filter setValue:@"H" forKey:@"inputCorrectionLevel"];
+    //拿到二维码图片
+    CIImage *image = [filter outputImage];
+    CGRect extent = CGRectIntegral(image.extent);
+    CGFloat scale = MIN(imageSize/CGRectGetWidth(extent), imageSize/CGRectGetHeight(extent));
+    
+    // 1.创建bitmap;
+    size_t width = CGRectGetWidth(extent) * scale;
+    size_t height = CGRectGetHeight(extent) * scale;
+    //创建一个DeviceGray颜色空间
+    CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
+    CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
+    CIContext *context = [CIContext contextWithOptions:nil];
+    //创建CoreGraphics image
+    CGImageRef bitmapImage = [context createCGImage:image fromRect:extent];
+    
+    CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
+    CGContextScaleCTM(bitmapRef, scale, scale);
+    CGContextDrawImage(bitmapRef, extent, bitmapImage);
+    
+    // 2.保存bitmap到图片
+    CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
+    CGContextRelease(bitmapRef);
+    CGImageRelease(bitmapImage);
+    
+    //原图
+    outputImage = [UIImage imageWithCGImage:scaledImage];
+    
+    if (logoImageName != nil && logoSize > 0) {
+        //给二维码加 logo 图
+        UIGraphicsBeginImageContextWithOptions(outputImage.size, NO, [[UIScreen mainScreen] scale]);
+        [outputImage drawInRect:CGRectMake(0,0 , imageSize, imageSize)];
+        //logo图
+        UIImage *logoImage = [UIImage imageNamed:logoImageName];
+        //把logo图画到生成的二维码图片上，注意尺寸不要太大（最大不超过二维码图片的30%），太大会造成扫不出来
+        [logoImage drawInRect:CGRectMake((imageSize-logoSize)/2.0, (imageSize-logoSize)/2.0, logoSize, logoSize)];
+        outputImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    
+    return outputImage;
+}
 
 
 @end

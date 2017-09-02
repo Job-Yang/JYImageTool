@@ -9,7 +9,7 @@
 #import "JYGetColourViewController.h"
 #import "JYImageTool.h"
 
-#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
 @interface JYGetColourViewController ()
@@ -50,7 +50,7 @@
 #pragma mark - getter & setter
 - (UIImageView *)imageView {
     if (!_imageView) {
-        _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(50, 114, SCREEN_WIDTH-100, SCREEN_HEIGHT-100-114)];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(50, 114, SCREEN_WIDTH-100, SCREEN_HEIGHT-100-114)];
         [_imageView setContentMode:UIViewContentModeScaleToFill];
         _imageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapActon:)];

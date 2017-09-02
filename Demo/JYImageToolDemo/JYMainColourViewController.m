@@ -9,7 +9,7 @@
 #import "JYMainColourViewController.h"
 #import "JYImageTool.h"
 
-#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
 @interface JYMainColourViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
