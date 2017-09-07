@@ -7,7 +7,7 @@
 //
 
 #import "JYEqualImageViewController.h"
-#import "JYImageTool.h"
+#import "UIImage+JYImageTool.h"
 
 #define SCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
@@ -43,8 +43,7 @@
     [self nextImage];
     
     //判断是否相同
-    BOOL isEqual = [[JYImageTool tool] isEqualToImage:self.imageViewOne.image
-                                             imageTwo:self.imageViewTwo.image];
+    BOOL isEqual = [self.imageViewOne.image isEqualToImage:self.imageViewTwo.image];
     if (isEqual) {
         self.resultLabel.backgroundColor = [UIColor greenColor];
         self.resultLabel.text = @"相同图片";

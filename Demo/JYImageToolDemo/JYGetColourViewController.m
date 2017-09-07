@@ -7,7 +7,7 @@
 //
 
 #import "JYGetColourViewController.h"
-#import "JYImageTool.h"
+#import "UIImage+JYImageTool.h"
 
 #define SCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
@@ -37,7 +37,7 @@
 - (void)tapActon:(UITapGestureRecognizer *)tap {
     CGPoint point = [tap locationInView:self.imageView];
     //得到对应点颜色
-    self.view.backgroundColor = [[JYImageTool tool] pixelColorAtLocation:point inImage:self.imageView.image formImageRect:self.imageView.frame];
+    self.view.backgroundColor = [self.imageView.image pixelColorAtLocation:point formImageRect:self.imageView.frame];
 }
 
 - (void)nextImage {

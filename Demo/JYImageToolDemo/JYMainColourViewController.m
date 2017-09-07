@@ -7,7 +7,7 @@
 //
 
 #import "JYMainColourViewController.h"
-#import "JYImageTool.h"
+#import "UIImage+JYImageTool.h"
 
 #define SCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
@@ -64,14 +64,18 @@
     //随机拿一张图。
     [self nextImage];
 
-    //得到主色
     UIColor *whiteColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
-    self.colorArr = [[JYImageTool tool] extractBrightColorsFromImage:self.imageView.image avoidColor:whiteColor maxCount:10];
-    //    self.colorArr = [[JYImageTool tool] extractBrightColorsFromImage:currentImage avoidColor:nil maxCount:10];
-    [self.nextButton setBackgroundColor:[self.colorArr firstObject]];
-    [self.collectionView reloadData];
-
-    NSLog(@"主色数量：%ld ",self.colorArr.count);
+    
+    //异步获取主色
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        self.colorArr = [self.imageView.image extractColorsWithMode:JYExtractModeOnlyDistinctColors
+                                                         avoidColor:whiteColor];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.nextButton setBackgroundColor:[self.colorArr firstObject]];
+            [self.collectionView reloadData];
+            NSLog(@"主色数量：%ld ",self.colorArr.count);
+        });
+    });
 }
 
 #pragma mark - getter & setter
@@ -91,7 +95,8 @@
         flowLayout.minimumLineSpacing = 0.f;
         flowLayout.minimumInteritemSpacing = 0.f;
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-150, SCREEN_WIDTH, 100)collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-150, SCREEN_WIDTH, 100)
+                                             collectionViewLayout:flowLayout];
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
         [_collectionView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Bg"]]];
         _collectionView.dataSource = self;
