@@ -26,6 +26,7 @@
     [super viewDidLoad];
     [self initUI];
     [self nextButtonAction];
+
 }
 
 #pragma mark - setup methods
@@ -65,7 +66,7 @@
     [self nextImage];
 
     UIColor *whiteColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
-    
+
     //异步获取主色
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.colorArr = [self.imageView.image extractColorsWithMode:JYExtractModeOnlyDistinctColors
