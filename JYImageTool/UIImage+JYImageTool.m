@@ -42,12 +42,12 @@
     if (!self) {return NO;}
 
     //图片压缩尺寸
-    CGRect rect = CGRectMake(0, 0, [JYImageCore core].colorLength, [JYImageCore core].colorLength);
+    CGRect rect = CGRectMake(0, 0, kJYColorLength, kJYColorLength);
     //获得第一张图片的ARGB信息
     CGImageRef ImageOneRef = self.CGImage;
     CGContextRef cgctxOne = [[JYImageCore core] createARGBBitmapContextFromImage:ImageOneRef imageRect:rect];
     CGContextDrawImage(cgctxOne, rect, ImageOneRef);
-    unsigned char *dataOne = CGBitmapContextGetData (cgctxOne);
+    unsigned char *dataOne = CGBitmapContextGetData(cgctxOne);
     
     //释放cgctxOne
     CGContextRelease(cgctxOne);
@@ -56,7 +56,7 @@
     CGImageRef ImageTwoRef = image.CGImage;
     CGContextRef cgctxTwo = [[JYImageCore core] createARGBBitmapContextFromImage:ImageTwoRef imageRect:rect];
     CGContextDrawImage(cgctxTwo, rect, ImageTwoRef);
-    unsigned char* dataTwo = CGBitmapContextGetData (cgctxTwo);
+    unsigned char* dataTwo = CGBitmapContextGetData(cgctxTwo);
     
     //释放cgctxTwo
     CGContextRelease(cgctxTwo);
@@ -65,7 +65,7 @@
     NSUInteger EqualCount = 0;
     
     //遍历重绘尺寸的每个像素点
-    for (NSUInteger i = 0; i < [JYImageCore core].colorLength*[JYImageCore core].colorLength - 1; i++) {
+    for (NSUInteger i = 0; i < kJYColorLength * kJYColorLength - 1; i++) {
         float redOne   = dataOne[4*i+1]/255.0;
         float greenOne = dataOne[4*i+2]/255.0;
         float blueOne  = dataOne[4*i+3]/255.0;
@@ -78,7 +78,7 @@
         float difference = pow(pow((redOne - redTwo), 2) + pow((greenOne - greenTwo), 2) + pow((blueOne - blueTwo), 2), 0.5);
         
         //色差小于阀值
-        if (difference < [JYImageCore core].distinctColorThreshold) {
+        if (difference < kJYDistinctColorThreshold) {
             EqualCount ++;
         }
     }
@@ -87,10 +87,10 @@
     free(dataOne);
     free(dataTwo);
     
-    NSLog(@"匹配度：%ld/%ld",EqualCount, [JYImageCore core].colorLength * [JYImageCore core].colorLength);
+    NSLog(@"匹配度：%ld/%ld",EqualCount, kJYColorLength * kJYColorLength);
     
     //大于相等条件即为相等
-    if (EqualCount > [JYImageCore core].colorLength * [JYImageCore core].colorLength * [JYImageCore core].suitability) {
+    if (EqualCount > kJYColorLength * kJYColorLength * kJYSuitability) {
         return YES;
     }
     else{

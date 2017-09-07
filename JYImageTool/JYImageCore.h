@@ -28,32 +28,32 @@ typedef NS_OPTIONS(NSUInteger, JYExtractMode) {
  *  像素匹配度[0-1]
  *  默认为0.95（95%的像素匹配则看做图片相等）
  */
-@property (assign, nonatomic) CGFloat suitability;
+extern const CGFloat kJYSuitability;
 
 /**
  *  颜色分量边长
  *  默认为20(此时的颜色空间为20*20*20)
  *  此参数不宜设置过大，否则会带来额外的运算量
  */
-@property (assign, nonatomic) NSUInteger colorLength;
+extern const NSUInteger kJYColorLength;
 
 /**
  *  暗淡的颜色分量阈值[0-1]
  *  默认为0.6(即大于153(255*0.4)颜色分量视为鲜艳)
  */
-@property (assign, nonatomic) CGFloat brightColorThreshold;
+extern const CGFloat kJYBrightColorThreshold;
 
 /**
  *  鲜艳的颜色分量阈值[0-1]
  *  默认为0.4(即小于102(255*0.6)颜色分量视为暗淡)
  */
-@property (assign, nonatomic) CGFloat darkColorThreshold;
+extern const CGFloat kJYDarkColorThreshold;
 
 /**
  *  不同颜色分量阈值
  *  默认为0.2(即在颜色空间中，两个颜色距离大于0.2才视为不同颜色)
  */
-@property (assign, nonatomic) CGFloat distinctColorThreshold;
+extern const CGFloat kJYDistinctColorThreshold;
 
 /**
  *  单例
@@ -121,6 +121,17 @@ typedef NS_OPTIONS(NSUInteger, JYExtractMode) {
                                                 count:(NSUInteger)count;
 @end
 
+
+/**
+ 颜色空间中每个颜色的基本元
+ 使用结构体可以提升效率
+ */
+typedef struct JYColorUnit {
+    CGFloat red;
+    CGFloat green;
+    CGFloat blue;
+    NSUInteger hitCount;
+} JYColorUnit;
 
 @interface JYColorBox : NSObject
 /**

@@ -27,17 +27,20 @@ int neighbourIndices[27][3] = {
 @implementation JYColorBox
 @end
 
-@interface JYImageCore ()
-@property (strong, nonatomic) NSMutableArray<JYColorBox *> *boxArr;
+const CGFloat kJYSuitability = 0.95;
+const NSUInteger kJYColorLength = 20;
+const CGFloat kJYBrightColorThreshold = 0.6;
+const CGFloat kJYDarkColorThreshold = 0.4;
+const CGFloat kJYDistinctColorThreshold = 0.2;
+const NSUInteger kJYCellCount = kJYColorLength * kJYColorLength * kJYColorLength;
+
+@interface JYImageCore () {
+    JYColorUnit colorUnits[kJYCellCount];
+}
+
 @end
 
-
 @implementation JYImageCore
-@synthesize suitability  = _suitability;
-@synthesize brightColorThreshold = _brightColorThreshold;
-@synthesize darkColorThreshold = _darkColorThreshold;
-
-
 #pragma mark - public methods
 + (instancetype)core {
     static JYImageCore *_core = nil;
@@ -129,7 +132,7 @@ int neighbourIndices[27][3] = {
     
     //过滤器的阀值,如果我们想要不同的颜色
     if (mode & JYExtractModeOnlyDistinctColors) {
-        sortedMaxima = [self filterDistinctMaxima:sortedMaxima threshold:self.distinctColorThreshold];
+        sortedMaxima = [self filterDistinctMaxima:sortedMaxima threshold:kJYDistinctColorThreshold];
     }
     
     //按照鲜艳度的顺序排序结果数组
@@ -147,7 +150,7 @@ int neighbourIndices[27][3] = {
 - (NSArray<JYColorBox *> *)findLocalMaximaInImage:(UIImage *)image
                                              mode:(JYExtractMode)mode {
     //复位所有Box
-    [self clearBoxArr];
+    [self clearColorUnits];
     
     //从image获取像素行的信息
     unsigned int pixelCount;
@@ -167,18 +170,18 @@ int neighbourIndices[27][3] = {
         
         //如果我们只希望保留鲜艳的色彩，则忽略暗淡的像素
         if (mode & JYExtractModeOnlyBrightColors) {
-            if (red < self.brightColorThreshold &&
-                green < self.brightColorThreshold &&
-                blue < self.brightColorThreshold) continue;
+            if (red < kJYBrightColorThreshold &&
+                green < kJYBrightColorThreshold &&
+                blue < kJYBrightColorThreshold) continue;
         }
         else if (mode & JYExtractModeOnlyDarkColors) {
-            if (red >= self.darkColorThreshold ||
-                green >= self.darkColorThreshold ||
-                blue >= self.darkColorThreshold) continue;
+            if (red >= kJYDarkColorThreshold ||
+                green >= kJYDarkColorThreshold ||
+                blue >= kJYDarkColorThreshold) continue;
         }
         
         //在每种颜色尺寸颜色组件映射到cell的下标
-        NSUInteger length = self.colorLength - 1;
+        NSUInteger length = kJYColorLength - 1;
         redIndex = red * length;
         greenIndex = green * length;
         blueIndex = blue * length;
@@ -187,12 +190,12 @@ int neighbourIndices[27][3] = {
         cellIndex = [self cellIndexWithRed:redIndex greed:greenIndex blue:blueIndex];
         
         //增加cell数
-        self.boxArr[cellIndex].hitCount++;
+        colorUnits[cellIndex].hitCount++;
         
         //添加像素的颜色到单元格颜色计数器
-        self.boxArr[cellIndex].red   += red;
-        self.boxArr[cellIndex].green += green;
-        self.boxArr[cellIndex].blue  += blue;
+        colorUnits[cellIndex].red   += red;
+        colorUnits[cellIndex].green += green;
+        colorUnits[cellIndex].blue  += blue;
     }
     
     //释放原始像素数据内存
@@ -202,11 +205,11 @@ int neighbourIndices[27][3] = {
     NSMutableArray<JYColorBox *> *localMaxima = [NSMutableArray array];
     
     //找到局部网格中的最大值
-    for (NSUInteger r = 0; r < self.colorLength; r++) {
-        for (NSUInteger g = 0; g < self.colorLength; g++) {
-            for (NSUInteger b = 0; b < self.colorLength; b++) {
+    for (NSUInteger r = 0; r < kJYColorLength; r++) {
+        for (NSUInteger g = 0; g < kJYColorLength; g++) {
+            for (NSUInteger b = 0; b < kJYColorLength; b++) {
                 //得到这个cell的计数
-                localHitCount = self.boxArr[[self cellIndexWithRed:r greed:g blue:b]].hitCount;
+                localHitCount = colorUnits[[self cellIndexWithRed:r greed:g blue:b]].hitCount;
                 
                 //如果这个cell没有命中,忽略它(我们零命中率不感兴趣)
                 if (localHitCount == 0) continue;
@@ -222,10 +225,10 @@ int neighbourIndices[27][3] = {
                     
                     //只检查有效的cell下标(跳过界外下标)
                     if (redIndex >= 0 && greenIndex >= 0 && blueIndex >= 0) {
-                        if (redIndex < self.colorLength &&
-                            greenIndex < self.colorLength &&
-                            blueIndex < self.colorLength) {
-                            if (self.boxArr[[self cellIndexWithRed:redIndex greed:greenIndex blue:blueIndex]].hitCount > localHitCount) {
+                        if (redIndex < kJYColorLength &&
+                            greenIndex < kJYColorLength &&
+                            blueIndex < kJYColorLength) {
+                            if (colorUnits[[self cellIndexWithRed:redIndex greed:greenIndex blue:blueIndex]].hitCount > localHitCount) {
                                 //临近的计数较高,所以这不是一个局部最大值。
                                 isLocalMaximum = NO;
                                 //跳出内部循坏
@@ -241,10 +244,10 @@ int neighbourIndices[27][3] = {
                 //否则添加这个cell局部最大值
                 JYColorBox *maximum = [[JYColorBox alloc] init];
                 maximum.cellIndex = [self cellIndexWithRed:r greed:g blue:b];
-                maximum.hitCount = self.boxArr[maximum.cellIndex].hitCount;
-                maximum.red   = self.boxArr[maximum.cellIndex].red  / (CGFloat)self.boxArr[maximum.cellIndex].hitCount;
-                maximum.green = self.boxArr[maximum.cellIndex].green/ (CGFloat)self.boxArr[maximum.cellIndex].hitCount;
-                maximum.blue  = self.boxArr[maximum.cellIndex].blue / (CGFloat)self.boxArr[maximum.cellIndex].hitCount;
+                maximum.hitCount = colorUnits[maximum.cellIndex].hitCount;
+                maximum.red   = colorUnits[maximum.cellIndex].red  / (CGFloat)colorUnits[maximum.cellIndex].hitCount;
+                maximum.green = colorUnits[maximum.cellIndex].green/ (CGFloat)colorUnits[maximum.cellIndex].hitCount;
+                maximum.blue  = colorUnits[maximum.cellIndex].blue / (CGFloat)colorUnits[maximum.cellIndex].hitCount;
                 maximum.brightness = fmax(fmax(maximum.red, maximum.green), maximum.blue);
                 [localMaxima addObject:maximum];
             }
@@ -358,7 +361,7 @@ int neighbourIndices[27][3] = {
         //计算颜色空间距离的变化量
         double delta = sqrt(redDelta*redDelta + greenDelta*greenDelta + blueDelta*blueDelta);
         
-        if (delta >= self.distinctColorThreshold) {
+        if (delta >= kJYDistinctColorThreshold) {
             [filteredMaxima addObject:max1];
         }
     }
@@ -413,70 +416,19 @@ int neighbourIndices[27][3] = {
     return [NSArray arrayWithArray:colorArray];
 }
 
-- (void)clearBoxArr {
-    for (NSUInteger k = 0; k < [self cellCount]; k++) {
-        self.boxArr[k].hitCount = 0;
-        self.boxArr[k].red   = 0.0;
-        self.boxArr[k].green = 0.0;
-        self.boxArr[k].blue  = 0.0;
+- (void)clearColorUnits {
+    for (NSUInteger k = 0; k < kJYCellCount; k++) {
+        colorUnits[k].hitCount = 0;
+        colorUnits[k].red   = 0.0;
+        colorUnits[k].green = 0.0;
+        colorUnits[k].blue  = 0.0;
     }
 }
 
 - (NSUInteger)cellIndexWithRed:(CGFloat)red greed:(CGFloat)greed blue:(CGFloat)blue {
-    return (red + greed * self.colorLength + blue * self.colorLength * self.colorLength);
-}
-
-- (NSUInteger)cellCount {
-    return self.colorLength * self.colorLength * self.colorLength;
+    return (red + greed * kJYColorLength + blue * kJYColorLength * kJYColorLength);
 }
 
 #pragma mark - getter & setter
-- (NSMutableArray<JYColorBox *> *)boxArr {
-    if (!_boxArr) {
-        _boxArr = [NSMutableArray array];
-        for (NSUInteger k = 0; k < [self cellCount]; k++) {
-            [_boxArr addObject:[JYColorBox new]];
-        }
-    }
-    return _boxArr;
-}
-
-- (CGFloat)suitability {
-    return 0.95;
-}
-
-- (void)setSuitability:(CGFloat)suitability {
-    if (suitability > 0.f || suitability < 1.f) {
-        _suitability = suitability;
-    }
-}
-
-- (NSUInteger)colorLength {
-    return 20;
-}
-
-- (CGFloat)brightColorThreshold {
-    return 0.6;
-}
-
-- (void)setBrightColorThreshold:(CGFloat)brightColorThreshold {
-    if (brightColorThreshold > 0.f || brightColorThreshold < 1.f) {
-        _brightColorThreshold = brightColorThreshold;
-    }
-}
-
-- (CGFloat)darkColorThreshold {
-    return 0.4;
-}
-
-- (void)setDarkColorThreshold:(CGFloat)darkColorThreshold {
-    if (darkColorThreshold > 0.f || darkColorThreshold < 1.f) {
-        _darkColorThreshold = darkColorThreshold;
-    }
-}
-
-- (CGFloat)distinctColorThreshold {
-    return 0.2;
-}
 
 @end
