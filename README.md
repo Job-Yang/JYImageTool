@@ -26,17 +26,17 @@ Usage
 ```Objective-C
 UIColor *whiteColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
 // extract bright colors and avoid results if close to white color
-NSArray *colorArr = [[JYImageTool tool] extractBrightColorsFromImage:image avoidColor:whiteColor maxCount:10];
+self.colorArr = [self.imageView.image extractColorsWithMode:JYExtractModeOnlyDistinctColors avoidColor:whiteColor];
 ```
 
 ### Extract the image pixel color
 ```Objective-C
-UIColor *color = [[JYImageTool tool] pixelColorAtLocation:point inImage:image formImageRect:frame];
+UIColor *color = [self.imageView.image pixelColorAtLocation:point formImageRect:self.imageView.frame];
 ```
 
 ### Contrast image is equal
 ```Objective-C
-BOOL isEqual = [[JYImageTool tool] isEqualToImage:imageOne imageTwo:imageTwo];
+BOOL isEqual = [self.imageViewOne.image isEqualToImage:self.imageViewTwo.image];
 if (isEqual) {
 //...Do something..
 }
@@ -87,17 +87,17 @@ Usage
 ```Objective-C
 UIColor *whiteColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
 // 提取较附近更亮的主色，并忽略太接近白色的提取结果
-NSArray *colorArr = [[JYImageTool tool] extractBrightColorsFromImage:image avoidColor:whiteColor maxCount:10];
+self.colorArr = [self.imageView.image extractColorsWithMode:JYExtractModeOnlyDistinctColors avoidColor:whiteColor];
 ```
 
 ### 图片像素点颜色提取
 ```Objective-C
-UIColor *color = [[JYImageTool tool] pixelColorAtLocation:point inImage:image formImageRect:frame];
+UIColor *color = [self.imageView.image pixelColorAtLocation:point formImageRect:self.imageView.frame];
 ```
 
 ### 图片相同比较
 ```Objective-C
-BOOL isEqual = [[JYImageTool tool] isEqualToImage:imageOne imageTwo:imageTwo];
+BOOL isEqual = [self.imageViewOne.image isEqualToImage:self.imageViewTwo.image];
 if (isEqual) {
 //...Do something..
 }

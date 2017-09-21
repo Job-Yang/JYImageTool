@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		B118DB1B1F5F9C690080C206 /* JYImageCore.m in Sources */ = {isa = PBXBuildFile; fileRef = B118DB1A1F5F9C690080C206 /* JYImageCore.m */; };
 		B118DB1E1F5FA0EA0080C206 /* UIImage+JYImageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B118DB1D1F5FA0EA0080C206 /* UIImage+JYImageTool.m */; };
-		B177F4E61F4FF22D0095575A /* JYEqualImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B177F4DF1F4FF22D0095575A /* JYEqualImageViewController.m */; };
-		B177F4E71F4FF22D0095575A /* JYGetColourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B177F4E11F4FF22D0095575A /* JYGetColourViewController.m */; };
-		B177F4E81F4FF22D0095575A /* JYMainColourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B177F4E31F4FF22D0095575A /* JYMainColourViewController.m */; };
 		B177F4E91F4FF22D0095575A /* JYRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B177F4E51F4FF22D0095575A /* JYRootViewController.m */; };
 		B177F4FD1F50695C0095575A /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = B177F4F11F50695C0095575A /* 1.png */; };
 		B177F4FE1F50695C0095575A /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = B177F4F21F50695C0095575A /* 10.png */; };
@@ -25,6 +22,11 @@
 		B177F5061F50695C0095575A /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = B177F4FA1F50695C0095575A /* 8.png */; };
 		B177F5071F50695C0095575A /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = B177F4FB1F50695C0095575A /* 9.png */; };
 		B177F5081F50695C0095575A /* Bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B177F4FC1F50695C0095575A /* Bg.png */; };
+		B17A35821F735BBC003F089C /* JYQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B17A35751F735BBB003F089C /* JYQRCodeViewController.m */; };
+		B17A35831F735BBC003F089C /* JYGetColourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B17A35781F735BBB003F089C /* JYGetColourViewController.m */; };
+		B17A35841F735BBC003F089C /* JYEqualImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B17A357B1F735BBB003F089C /* JYEqualImageViewController.m */; };
+		B17A35851F735BBC003F089C /* JYCompressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B17A357E1F735BBB003F089C /* JYCompressViewController.m */; };
+		B17A35861F735BBC003F089C /* JYMainColourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B17A35811F735BBB003F089C /* JYMainColourViewController.m */; };
 		B1B4E2391F4E9D6200C63E64 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B4E2381F4E9D6200C63E64 /* main.m */; };
 		B1B4E23C1F4E9D6200C63E64 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B4E23B1F4E9D6200C63E64 /* AppDelegate.m */; };
 		B1B4E2421F4E9D6200C63E64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B4E2401F4E9D6200C63E64 /* Main.storyboard */; };
@@ -37,12 +39,6 @@
 		B118DB1A1F5F9C690080C206 /* JYImageCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYImageCore.m; sourceTree = "<group>"; };
 		B118DB1C1F5FA0EA0080C206 /* UIImage+JYImageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JYImageTool.h"; sourceTree = "<group>"; };
 		B118DB1D1F5FA0EA0080C206 /* UIImage+JYImageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JYImageTool.m"; sourceTree = "<group>"; };
-		B177F4DE1F4FF22D0095575A /* JYEqualImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYEqualImageViewController.h; sourceTree = "<group>"; };
-		B177F4DF1F4FF22D0095575A /* JYEqualImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYEqualImageViewController.m; sourceTree = "<group>"; };
-		B177F4E01F4FF22D0095575A /* JYGetColourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYGetColourViewController.h; sourceTree = "<group>"; };
-		B177F4E11F4FF22D0095575A /* JYGetColourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYGetColourViewController.m; sourceTree = "<group>"; };
-		B177F4E21F4FF22D0095575A /* JYMainColourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYMainColourViewController.h; sourceTree = "<group>"; };
-		B177F4E31F4FF22D0095575A /* JYMainColourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYMainColourViewController.m; sourceTree = "<group>"; };
 		B177F4E41F4FF22D0095575A /* JYRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYRootViewController.h; sourceTree = "<group>"; };
 		B177F4E51F4FF22D0095575A /* JYRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYRootViewController.m; sourceTree = "<group>"; };
 		B177F4F11F50695C0095575A /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
@@ -57,6 +53,19 @@
 		B177F4FA1F50695C0095575A /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
 		B177F4FB1F50695C0095575A /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		B177F4FC1F50695C0095575A /* Bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bg.png; sourceTree = "<group>"; };
+		B17A35681F72088A003F089C /* JYImageTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYImageTool.h; sourceTree = "<group>"; };
+		B17A35711F7356C8003F089C /* JYMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYMacro.h; sourceTree = "<group>"; };
+		B17A35721F7359C4003F089C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B17A35741F735BBB003F089C /* JYQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYQRCodeViewController.h; sourceTree = "<group>"; };
+		B17A35751F735BBB003F089C /* JYQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYQRCodeViewController.m; sourceTree = "<group>"; };
+		B17A35771F735BBB003F089C /* JYGetColourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYGetColourViewController.h; sourceTree = "<group>"; };
+		B17A35781F735BBB003F089C /* JYGetColourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYGetColourViewController.m; sourceTree = "<group>"; };
+		B17A357A1F735BBB003F089C /* JYEqualImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYEqualImageViewController.h; sourceTree = "<group>"; };
+		B17A357B1F735BBB003F089C /* JYEqualImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYEqualImageViewController.m; sourceTree = "<group>"; };
+		B17A357D1F735BBB003F089C /* JYCompressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCompressViewController.h; sourceTree = "<group>"; };
+		B17A357E1F735BBB003F089C /* JYCompressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCompressViewController.m; sourceTree = "<group>"; };
+		B17A35801F735BBB003F089C /* JYMainColourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYMainColourViewController.h; sourceTree = "<group>"; };
+		B17A35811F735BBB003F089C /* JYMainColourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYMainColourViewController.m; sourceTree = "<group>"; };
 		B1B4E2341F4E9D6200C63E64 /* JYImageToolDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JYImageToolDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B4E2381F4E9D6200C63E64 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B1B4E23A1F4E9D6200C63E64 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -85,6 +94,7 @@
 				B118DB1A1F5F9C690080C206 /* JYImageCore.m */,
 				B118DB1C1F5FA0EA0080C206 /* UIImage+JYImageTool.h */,
 				B118DB1D1F5FA0EA0080C206 /* UIImage+JYImageTool.m */,
+				B17A35681F72088A003F089C /* JYImageTool.h */,
 			);
 			path = JYImageTool;
 			sourceTree = "<group>";
@@ -106,6 +116,51 @@
 				B177F4FC1F50695C0095575A /* Bg.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B17A35731F735BBB003F089C /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				B17A35741F735BBB003F089C /* JYQRCodeViewController.h */,
+				B17A35751F735BBB003F089C /* JYQRCodeViewController.m */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		B17A35761F735BBB003F089C /* GetColour */ = {
+			isa = PBXGroup;
+			children = (
+				B17A35771F735BBB003F089C /* JYGetColourViewController.h */,
+				B17A35781F735BBB003F089C /* JYGetColourViewController.m */,
+			);
+			path = GetColour;
+			sourceTree = "<group>";
+		};
+		B17A35791F735BBB003F089C /* EqualImage */ = {
+			isa = PBXGroup;
+			children = (
+				B17A357A1F735BBB003F089C /* JYEqualImageViewController.h */,
+				B17A357B1F735BBB003F089C /* JYEqualImageViewController.m */,
+			);
+			path = EqualImage;
+			sourceTree = "<group>";
+		};
+		B17A357C1F735BBB003F089C /* CompressImage */ = {
+			isa = PBXGroup;
+			children = (
+				B17A357D1F735BBB003F089C /* JYCompressViewController.h */,
+				B17A357E1F735BBB003F089C /* JYCompressViewController.m */,
+			);
+			path = CompressImage;
+			sourceTree = "<group>";
+		};
+		B17A357F1F735BBB003F089C /* MainColour */ = {
+			isa = PBXGroup;
+			children = (
+				B17A35801F735BBB003F089C /* JYMainColourViewController.h */,
+				B17A35811F735BBB003F089C /* JYMainColourViewController.m */,
+			);
+			path = MainColour;
 			sourceTree = "<group>";
 		};
 		B1B4E22B1F4E9D6200C63E64 = {
@@ -130,14 +185,14 @@
 				B177F4CC1F4FF0D80095575A /* JYImageTool */,
 				B1B4E23A1F4E9D6200C63E64 /* AppDelegate.h */,
 				B1B4E23B1F4E9D6200C63E64 /* AppDelegate.m */,
+				B17A35711F7356C8003F089C /* JYMacro.h */,
 				B177F4E41F4FF22D0095575A /* JYRootViewController.h */,
 				B177F4E51F4FF22D0095575A /* JYRootViewController.m */,
-				B177F4E21F4FF22D0095575A /* JYMainColourViewController.h */,
-				B177F4E31F4FF22D0095575A /* JYMainColourViewController.m */,
-				B177F4E01F4FF22D0095575A /* JYGetColourViewController.h */,
-				B177F4E11F4FF22D0095575A /* JYGetColourViewController.m */,
-				B177F4DE1F4FF22D0095575A /* JYEqualImageViewController.h */,
-				B177F4DF1F4FF22D0095575A /* JYEqualImageViewController.m */,
+				B17A357F1F735BBB003F089C /* MainColour */,
+				B17A35761F735BBB003F089C /* GetColour */,
+				B17A35791F735BBB003F089C /* EqualImage */,
+				B17A35731F735BBB003F089C /* QRCode */,
+				B17A357C1F735BBB003F089C /* CompressImage */,
 				B1B4E2401F4E9D6200C63E64 /* Main.storyboard */,
 				B1B4E2431F4E9D6200C63E64 /* Assets.xcassets */,
 				B1B4E2451F4E9D6200C63E64 /* LaunchScreen.storyboard */,
@@ -152,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				B1B4E2381F4E9D6200C63E64 /* main.m */,
+				B17A35721F7359C4003F089C /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -182,7 +238,7 @@
 		B1B4E22C1F4E9D6200C63E64 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Job-Yang";
 				TargetAttributes = {
 					B1B4E2331F4E9D6200C63E64 = {
@@ -239,13 +295,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B177F4E71F4FF22D0095575A /* JYGetColourViewController.m in Sources */,
-				B177F4E81F4FF22D0095575A /* JYMainColourViewController.m in Sources */,
+				B17A35861F735BBC003F089C /* JYMainColourViewController.m in Sources */,
+				B17A35831F735BBC003F089C /* JYGetColourViewController.m in Sources */,
 				B1B4E23C1F4E9D6200C63E64 /* AppDelegate.m in Sources */,
+				B17A35821F735BBC003F089C /* JYQRCodeViewController.m in Sources */,
 				B118DB1E1F5FA0EA0080C206 /* UIImage+JYImageTool.m in Sources */,
+				B17A35841F735BBC003F089C /* JYEqualImageViewController.m in Sources */,
 				B1B4E2391F4E9D6200C63E64 /* main.m in Sources */,
-				B177F4E61F4FF22D0095575A /* JYEqualImageViewController.m in Sources */,
 				B177F4E91F4FF22D0095575A /* JYRootViewController.m in Sources */,
+				B17A35851F735BBC003F089C /* JYCompressViewController.m in Sources */,
 				B118DB1B1F5F9C690080C206 /* JYImageCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +340,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -290,7 +350,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -303,6 +367,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/JYImageToolDemo/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -330,7 +395,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -338,7 +405,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -349,6 +420,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/JYImageToolDemo/PrefixHeader.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -368,7 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = JYImageToolDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Job-Yang.JYImageToolDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -382,7 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = JYImageToolDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Job-Yang.JYImageToolDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";

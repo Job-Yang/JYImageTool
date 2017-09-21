@@ -7,16 +7,13 @@
 //
 
 #import "JYMainColourViewController.h"
-#import "UIImage+JYImageTool.h"
-
-#define SCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
-#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+#import "JYImageTool.h"
 
 @interface JYMainColourViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
-@property(strong, nonatomic) UIImageView *imageView;
-@property(strong, nonatomic) UIButton *nextButton;
-@property(strong, nonatomic) UICollectionView *collectionView;
-@property(strong, nonatomic) NSArray<UIColor *> *colorArr;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UIButton *nextButton;
+@property (strong, nonatomic) UICollectionView *collectionView;
+@property (strong, nonatomic) NSArray<UIColor *> *colorArr;
 @end
 
 @implementation JYMainColourViewController
@@ -66,24 +63,18 @@
     [self nextImage];
 
     UIColor *whiteColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
-
-    //异步获取主色
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        self.colorArr = [self.imageView.image extractColorsWithMode:JYExtractModeOnlyDistinctColors
-                                                         avoidColor:whiteColor];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.nextButton setBackgroundColor:[self.colorArr firstObject]];
-            [self.collectionView reloadData];
-            NSLog(@"主色数量：%ld ",self.colorArr.count);
-        });
-    });
+    self.colorArr = [self.imageView.image extractColorsWithMode:JYExtractModeOnlyDistinctColors
+                                                     avoidColor:whiteColor];
+    [self.collectionView reloadData];
+    NSLog(@"主色数量：%ld ",self.colorArr.count);
 }
 
 #pragma mark - getter & setter
 - (UIImageView *)imageView {
     if (!_imageView) {
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-150-64)];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, TOP_LAYOUT_GUIDE, SCREEN_WIDTH, SAFE_HEIGHT-150)];
         [_imageView setContentMode:UIViewContentModeScaleAspectFill];
+        _imageView.layer.masksToBounds = YES;
         [self.view addSubview:_imageView];
     }
     return _imageView;
@@ -96,8 +87,7 @@
         flowLayout.minimumLineSpacing = 0.f;
         flowLayout.minimumInteritemSpacing = 0.f;
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-150, SCREEN_WIDTH, 100)
-                                             collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-BOTTOM_LAYOUT_GUIDE-150, SCREEN_WIDTH, 100) collectionViewLayout:flowLayout];
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
         [_collectionView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Bg"]]];
         _collectionView.dataSource = self;
@@ -109,10 +99,10 @@
 
 - (UIButton *)nextButton {
     if (!_nextButton) {
-        _nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
-        _nextButton.titleLabel.font = [UIFont systemFontOfSize:30.f];
+        _nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-BOTTOM_LAYOUT_GUIDE-49, SCREEN_WIDTH, 49)];
+        _nextButton.titleLabel.font = [UIFont fontWithName:@"GillSans-Italic" size:30.f];
         [_nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
-        [_nextButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_nextButton setTitleColor:RGB(58,63,83) forState:UIControlStateNormal];
         [_nextButton addTarget:self action:@selector(nextButtonAction) forControlEvents:UIControlEventTouchDown];
         [self.view addSubview:_nextButton];
     }

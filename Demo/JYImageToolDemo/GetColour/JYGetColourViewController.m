@@ -7,14 +7,11 @@
 //
 
 #import "JYGetColourViewController.h"
-#import "UIImage+JYImageTool.h"
-
-#define SCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
-#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+#import "JYImageTool.h"
 
 @interface JYGetColourViewController ()
-@property(strong, nonatomic) UIImageView *imageView;
-@property(strong, nonatomic) UIButton *nextButton;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UIButton *nextButton;
 @end
 
 @implementation JYGetColourViewController
@@ -38,6 +35,7 @@
     CGPoint point = [tap locationInView:self.imageView];
     //得到对应点颜色
     self.view.backgroundColor = [self.imageView.image pixelColorAtLocation:point formImageRect:self.imageView.frame];
+    [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (void)nextImage {
@@ -50,9 +48,10 @@
 #pragma mark - getter & setter
 - (UIImageView *)imageView {
     if (!_imageView) {
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(50, 114, SCREEN_WIDTH-100, SCREEN_HEIGHT-100-114)];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, TOP_LAYOUT_GUIDE+30, SCREEN_WIDTH-60, SAFE_HEIGHT-110)];
         [_imageView setContentMode:UIViewContentModeScaleToFill];
         _imageView.userInteractionEnabled = YES;
+        _imageView.layer.masksToBounds = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapActon:)];
         [_imageView addGestureRecognizer:tap];
         [self.view addSubview:_imageView];
@@ -62,10 +61,10 @@
 
 - (UIButton *)nextButton {
     if (!_nextButton) {
-        _nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
-        _nextButton.titleLabel.font = [UIFont systemFontOfSize:30.f];
+        _nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-BOTTOM_LAYOUT_GUIDE-49, SCREEN_WIDTH, 49)];
+        _nextButton.titleLabel.font = [UIFont fontWithName:@"GillSans-Italic" size:30.f];
         [_nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
-        [_nextButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_nextButton setTitleColor:RGB(58,63,83) forState:UIControlStateNormal];
         [_nextButton addTarget:self action:@selector(nextImage) forControlEvents:UIControlEventTouchDown];
         [self.view addSubview:_nextButton];
     }

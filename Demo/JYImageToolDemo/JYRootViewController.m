@@ -26,7 +26,11 @@
     [self addCell:@"提取主色" class:@"JYMainColourViewController"];
     [self addCell:@"提取指定点颜色" class:@"JYGetColourViewController"];
     [self addCell:@"相同判断" class:@"JYEqualImageViewController"];
-    [self.tableView reloadData];
+    [self addCell:@"生成二维码" class:@"JYQRCodeViewController"];
+    [self addCell:@"图像压缩" class:@"JYCompressViewController"];
+    self.tableView.rowHeight = 60;
+    self.tableView.tableFooterView = [UIView new];
+    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
 
 #pragma mark - setup methods
@@ -45,6 +49,8 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"JYImageTool"];
     }
+    cell.textLabel.font = [UIFont fontWithName:@"GillSans-Italic" size:16.f];
+    cell.textLabel.textColor = RGB(58,63,83);
     cell.textLabel.text = self.titles[indexPath.row];
     return cell;
 }

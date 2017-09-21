@@ -124,7 +124,7 @@ extern const CGFloat kJYDistinctColorThreshold;
 
 /**
  颜色空间中每个颜色的基本元
- 使用结构体可以提升效率
+ 使用结构体可以相比与Model会有更好的性能
  */
 typedef struct JYColorUnit {
     CGFloat red;

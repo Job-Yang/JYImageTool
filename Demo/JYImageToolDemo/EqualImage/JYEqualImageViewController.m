@@ -7,16 +7,13 @@
 //
 
 #import "JYEqualImageViewController.h"
-#import "UIImage+JYImageTool.h"
-
-#define SCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
-#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+#import "JYImageTool.h"
 
 @interface JYEqualImageViewController ()
-@property(strong, nonatomic) UIImageView *imageViewOne;
-@property(strong, nonatomic) UIImageView *imageViewTwo;
-@property(strong, nonatomic) UILabel *resultLabel;
-@property(strong, nonatomic) UIButton *nextButton;
+@property (strong, nonatomic) UIImageView *imageViewOne;
+@property (strong, nonatomic) UIImageView *imageViewTwo;
+@property (strong, nonatomic) UILabel *resultLabel;
+@property (strong, nonatomic) UIButton *nextButton;
 @end
 
 @implementation JYEqualImageViewController
@@ -25,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    [self nextImage];
+    [self nextButtonAction];
 }
 
 #pragma mark - setup methods
@@ -65,7 +62,7 @@
 #pragma mark - getter & setter
 - (UIImageView *)imageViewOne {
     if (!_imageViewOne) {
-        _imageViewOne = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, (SCREEN_HEIGHT-64-50)/2)];
+        _imageViewOne = [[UIImageView alloc] initWithFrame:CGRectMake(0, TOP_LAYOUT_GUIDE, SCREEN_WIDTH, (SAFE_HEIGHT-50)/2)];
         [_imageViewOne setContentMode:UIViewContentModeScaleAspectFill];
         _imageViewOne.layer.masksToBounds = YES;
         [self.view addSubview:_imageViewOne];
@@ -75,7 +72,7 @@
 
 - (UIImageView *)imageViewTwo {
     if (!_imageViewTwo) {
-        _imageViewTwo = [[UIImageView alloc] initWithFrame:CGRectMake(0, (SCREEN_HEIGHT-64-50)/2+64, SCREEN_WIDTH, (SCREEN_HEIGHT-64-50)/2)];
+        _imageViewTwo = [[UIImageView alloc] initWithFrame:CGRectMake(0, (SAFE_HEIGHT-50)/2+TOP_LAYOUT_GUIDE, SCREEN_WIDTH, (SAFE_HEIGHT-50)/2)];
         [_imageViewTwo setContentMode:UIViewContentModeScaleAspectFill];
         _imageViewTwo.layer.masksToBounds = YES;
         [self.view addSubview:_imageViewTwo];
@@ -85,10 +82,10 @@
 
 - (UILabel *)resultLabel {
     if (!_resultLabel) {
-        _resultLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, (SCREEN_HEIGHT-64-50)/2+30, 200, 60)];
+        _resultLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, (SCREEN_HEIGHT-TOP_LAYOUT_GUIDE-50)/2+30, 200, 60)];
         [_resultLabel setTextColor:[UIColor whiteColor]];
         _resultLabel.textAlignment = NSTextAlignmentCenter;
-        _resultLabel.font = [UIFont systemFontOfSize:35.f];
+        _resultLabel.font = [UIFont fontWithName:@"GillSans-Italic" size:30.f];
         [self.view addSubview:_resultLabel];
     }
     return _resultLabel;
@@ -96,14 +93,13 @@
 
 - (UIButton *)nextButton {
     if (!_nextButton) {
-        _nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
-        _nextButton.titleLabel.font = [UIFont systemFontOfSize:30.f];
+        _nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-BOTTOM_LAYOUT_GUIDE-49, SCREEN_WIDTH, 49)];
+        _nextButton.titleLabel.font = [UIFont fontWithName:@"GillSans-Italic" size:30.f];
         [_nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
-        [_nextButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_nextButton setTitleColor:RGB(58,63,83) forState:UIControlStateNormal];
         [_nextButton addTarget:self action:@selector(nextButtonAction) forControlEvents:UIControlEventTouchDown];
         [self.view addSubview:_nextButton];
     }
     return _nextButton;
 }
-
 @end
