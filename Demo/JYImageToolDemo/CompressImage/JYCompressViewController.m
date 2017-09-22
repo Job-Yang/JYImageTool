@@ -9,11 +9,14 @@
 #import "JYCompressViewController.h"
 #import "JYImageTool.h"
 
+CGFloat defaultsValue = 500.f;
+
 @interface JYCompressViewController ()
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIButton *nextButton;
 @property (strong, nonatomic) UILabel *infoLabel;
 @property (strong, nonatomic) UISlider *slider;
+@property (strong, nonatomic) UILabel *sliderLabel;
 @property (strong, nonatomic) UIImage *originalImage;
 @end
 
@@ -31,16 +34,18 @@
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self imageView];
     [self slider];
+    [self sliderLabel];
     [self nextButton];
 }
 
 #pragma mark - event & response
 - (void)nextImage {
     //随机拿一张图。
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%d",(arc4random()%11)+1] ofType:@"png"];
-    self.originalImage = [UIImage imageWithContentsOfFile:imagePath];
+    NSString *imageName = [NSString stringWithFormat:@"resources_%d",(arc4random()%10)+1];
+    self.originalImage = [UIImage imageNamed:imageName];
     self.imageView.image = self.originalImage;
-    [self compressImageToByte:500 * 1024];
+    [self resetSlider];
+    [self compressImageToByte:defaultsValue * 1024];
 }
 
 - (void)compressImageToByte:(NSUInteger)byte {
@@ -58,15 +63,22 @@
 }
 
 - (void)sliderValueChanged:(UISlider *)slider {
+    self.sliderLabel.text = [NSString stringWithFormat:@"%.3f", slider.value];
     NSUInteger byte = slider.value * 1024;
     [self compressImageToByte:byte];
+}
+
+- (void)resetSlider {
+    self.slider.maximumValue = defaultsValue;
+    self.slider.value = defaultsValue;
+    self.sliderLabel.text = [NSString stringWithFormat:@"%.3f", defaultsValue];
 }
 
 #pragma mark - getter & setter
 - (UIImageView *)imageView {
     if (!_imageView) {
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, TOP_LAYOUT_GUIDE, SCREEN_WIDTH, SAFE_HEIGHT-110)];
-        [_imageView setContentMode:UIViewContentModeScaleToFill];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, TOP_LAYOUT_GUIDE, SCREEN_WIDTH, SAFE_HEIGHT-120)];
+        [_imageView setContentMode:UIViewContentModeScaleAspectFill];
         _imageView.userInteractionEnabled = YES;
         _imageView.layer.masksToBounds = YES;
         [self.view addSubview:_imageView];
@@ -86,12 +98,23 @@
     return _infoLabel;
 }
 
+- (UILabel *)sliderLabel {
+    if (!_sliderLabel) {
+        _sliderLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-80)/2, SCREEN_HEIGHT-BOTTOM_LAYOUT_GUIDE-100, 80, 15)];
+        _sliderLabel.font = [UIFont italicSystemFontOfSize:11.f];
+        _sliderLabel.textColor = RGB(58,63,83);
+        _sliderLabel.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:_sliderLabel];
+    }
+    return _sliderLabel;
+}
+
 - (UISlider *)slider {
     if (!_slider) {
-        _slider = [[UISlider alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT-BOTTOM_LAYOUT_GUIDE-90, SCREEN_WIDTH-40, 20)];
+        _slider = [[UISlider alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT-BOTTOM_LAYOUT_GUIDE-70, SCREEN_WIDTH-40, 20)];
         _slider.minimumValue = 10;
-        _slider.maximumValue = 500;
-        _slider.value = _slider.maximumValue;
+        _slider.maximumValue = defaultsValue;
+        _slider.value = defaultsValue;
         _slider.continuous = YES;
         [_slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
         [self.view addSubview:_slider];

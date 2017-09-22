@@ -40,16 +40,15 @@
 
 - (void)nextImage {
     //随机拿一张图。
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%d",(arc4random()%11)+1] ofType:@"png"];
-    UIImage *currentImage = [UIImage imageWithContentsOfFile:imagePath];
-    self.imageView.image = currentImage;
+    NSString *imageName = [NSString stringWithFormat:@"resources_%d",(arc4random()%10)+1];
+    self.imageView.image = [UIImage imageNamed:imageName];
 }
 
 #pragma mark - getter & setter
 - (UIImageView *)imageView {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, TOP_LAYOUT_GUIDE+30, SCREEN_WIDTH-60, SAFE_HEIGHT-110)];
-        [_imageView setContentMode:UIViewContentModeScaleToFill];
+        [_imageView setContentMode:UIViewContentModeScaleAspectFill];
         _imageView.userInteractionEnabled = YES;
         _imageView.layer.masksToBounds = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapActon:)];

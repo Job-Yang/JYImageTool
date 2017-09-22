@@ -17,6 +17,8 @@ Features
 - Extract the primary color of the image(Multiple modes)
 - Extract the image pixel color
 - Contrast image is equal (based on pixel rather than image name)
+- QRcode image generation and recognition
+- Image compression
 
 
 Usage
@@ -43,6 +45,20 @@ if (isEqual) {
 else {
 //...Do something..
 }
+```
+
+### QRcode image generation and recognition
+```Objective-C
+// Create QRcode image
+UIImage *QRcodeImage = [UIImage QRCodeImageFromString:@"Job-Yang" imageSize:500];
+// Recognition QRcode in the image
+NSString *info = [QRcodeImage identifyQRCode];
+```
+
+### Image compression
+```Objective-C
+// Compressed to 500KB
+NSData *compressData = [self.originalImage compressImageToByte:500 * 1024];
 ```
 
 Installation
@@ -78,6 +94,8 @@ JYImageTool is released under the MIT license. See LICENSE file for details.
 - 图片主色提取（包含多种提取模式）
 - 图片像素点颜色提取
 - 图片相同比较（基于图片像素而非图片名）
+- 二维码图片生成与识别
+- 图片压缩
 
 
 Usage
@@ -105,6 +123,21 @@ else {
 //...Do something..
 }
 ```
+
+### 二维码图片生成与识别
+```Objective-C
+// 创建二维码图片
+UIImage *QRcodeImage = [UIImage QRCodeImageFromString:@"Job-Yang" imageSize:500];
+// 识别图片中的二维码
+NSString *info = [QRcodeImage identifyQRCode];
+```
+
+### 图片压缩
+```Objective-C
+// 压缩到500KB
+NSData *compressData = [self.originalImage compressImageToByte:500 * 1024];
+```
+
 
 安装
 ==============

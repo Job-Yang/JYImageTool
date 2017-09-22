@@ -53,10 +53,10 @@
 
 - (void)nextImage {
     //随机拿2张图。
-    NSString *imagePath1 = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%d",(arc4random()%11)+1] ofType:@"png"];
-    NSString *imagePath2 = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%d",(arc4random()%11)+1] ofType:@"png"];
-    self.imageViewOne.image = [UIImage imageWithContentsOfFile:imagePath1];
-    self.imageViewTwo.image = [UIImage imageWithContentsOfFile:imagePath2];
+    NSString *imageName1 = [NSString stringWithFormat:@"resources_%d",(arc4random()%10)+1];
+    NSString *imageName2 = [NSString stringWithFormat:@"resources_%d",(arc4random()%10)+1];
+    self.imageViewOne.image = [UIImage imageNamed:imageName1];
+    self.imageViewTwo.image = [UIImage imageNamed:imageName2];
 }
 
 #pragma mark - getter & setter

@@ -106,7 +106,7 @@
 - (UIImageView *)imageView {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, TOP_LAYOUT_GUIDE+150, SCREEN_WIDTH-60, SCREEN_WIDTH-60)];
-        [_imageView setContentMode:UIViewContentModeScaleToFill];
+        [_imageView setContentMode:UIViewContentModeScaleAspectFill];
         _imageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapActon:)];
         [_imageView addGestureRecognizer:tap];

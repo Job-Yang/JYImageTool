@@ -53,9 +53,8 @@
 
 #pragma mark - event & response
 - (void)nextImage {
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%d",(arc4random()%11)+1] ofType:@"png"];
-    UIImage *currentImage = [UIImage imageWithContentsOfFile:imagePath];
-    self.imageView.image = currentImage;
+    NSString *imageName = [NSString stringWithFormat:@"resources_%d",(arc4random()%10)+1];
+    self.imageView.image = [UIImage imageNamed:imageName];
 }
 
 - (void)nextButtonAction {
