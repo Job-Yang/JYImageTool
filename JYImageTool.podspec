@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = 'JYImageTool'
-  s.summary      = 'Useful image tools for iOS.'
-  s.version      = '2.0'
+  s.summary      = '🛠Useful image tools for iOS.'
+  s.version      = '2.1'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Job-Yang" => "578093143@qq.com" }
   s.social_media_url = 'http://www.jianshu.com/users/cf7e85326534/latest_articles'
