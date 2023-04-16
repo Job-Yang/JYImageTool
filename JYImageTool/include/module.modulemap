@@ -1,0 +1,5 @@
+module JYImageTool {
+    umbrella header "JYImageTool/JYImageTool.h"
+    export *
+    module * { export * }
+}
